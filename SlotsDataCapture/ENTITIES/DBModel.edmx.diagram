@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4e0da8c72c846b8a59db38142c4e94d" Name="Diagram1">
+        <EntityTypeShape EntityType="SDCModel.BoardAerials" Width="1.5" PointX="10.5" PointY="0.625" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="SDCModel.BoardBatches" Width="1.5" PointX="8.125" PointY="2.875" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="SDCModel.BoardImages" Width="1.5" PointX="12.375" PointY="5.375" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="SDCModel.BoardManufacturers" Width="1.875" PointX="3.5" PointY="3" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="SDCModel.Boards" Width="1.5" PointX="10.375" PointY="2.875" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="SDCModel.BoardTypes" Width="1.5" PointX="6.5" PointY="0.5" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="SDCModel.Company" Width="1.5" PointX="16.625" PointY="14.875" FillColor="Yellow" />
+        <EntityTypeShape EntityType="SDCModel.Contacts" Width="1.5" PointX="17.125" PointY="10" FillColor="192, 64, 0" />
+        <EntityTypeShape EntityType="SDCModel.Countries" Width="1.5" PointX="14.5" PointY="4.875" FillColor="224, 224, 224" />
+        <EntityTypeShape EntityType="SDCModel.CourierService" Width="1.5" PointX="21" PointY="5" FillColor="Silver" />
+        <EntityTypeShape EntityType="SDCModel.ImageTypes" Width="1.5" PointX="9.375" PointY="6.375" FillColor="224, 224, 224" />
+        <EntityTypeShape EntityType="SDCModel.ManufacturerModels" Width="2" PointX="4.375" PointY="11" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.Manufacturers" Width="1.875" PointX="1" PointY="9.75" />
+        <EntityTypeShape EntityType="SDCModel.Operators" Width="1.5" PointX="14.5" PointY="12.875" FillColor="Yellow" />
+        <EntityTypeShape EntityType="SDCModel.OperatorTypes" Width="1.5" PointX="19.875" PointY="10.875" FillColor="Yellow" />
+        <EntityTypeShape EntityType="SDCModel.OperatorVenues" Width="1.75" PointX="14.125" PointY="17" FillColor="Yellow" />
+        <EntityTypeShape EntityType="SDCModel.Reports" Width="1.5" PointX="6.625" PointY="7.875" FillColor="Red" />
+        <EntityTypeShape EntityType="SDCModel.Returns" Width="1.5" PointX="12" PointY="10.25" FillColor="Red" />
+        <EntityTypeShape EntityType="SDCModel.SimCardBatches" Width="1.75" PointX="10.5" PointY="30.125" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="SDCModel.SimCardManufacturers" Width="2" PointX="7.75" PointY="29.625" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="SDCModel.SimCards" Width="1.5" PointX="12.75" PointY="30.25" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="SDCModel.SimCardTypes" Width="1.875" PointX="7.875" PointY="32" FillColor="192, 255, 255" />
+        <EntityTypeShape EntityType="SDCModel.SlotHarnesses" Width="1.5" PointX="12" PointY="21" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.SlotImages" Width="1.5" PointX="12" PointY="13.125" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.SlotModels" Width="1.5" PointX="7.5" PointY="20.25" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.SlotName" Width="1.5" PointX="6.75" PointY="13.5" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.Slots" Width="1.5" PointX="9.375" PointY="14" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.SlotStatus" Width="1.5" PointX="7.5" PointY="22.625" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.SlotTypes" Width="1.5" PointX="7.5" PointY="18" FillColor="192, 192, 255" />
+        <EntityTypeShape EntityType="SDCModel.Titles" Width="1.5" PointX="18.125" PointY="7.25" FillColor="224, 224, 224" />
+        <EntityTypeShape EntityType="SDCModel.Tracker" Width="1.5" PointX="12" PointY="26.25" FillColor="Red" />
+        <AssociationConnector Association="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBAerial" />
+        <AssociationConnector Association="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBoardBatches" />
+        <AssociationConnector Association="SDCModel.SMIBoardManufacturers_GOTO_SMIBCardBatches" />
+        <AssociationConnector Association="SDCModel.SMIBoardTypes_GOTO_SMIBoardBatches" />
+        <AssociationConnector Association="SDCModel.ImageTypes_GOTO_SMIBoardImages" />
+        <AssociationConnector Association="SDCModel.OperatorVenue_GOTO_SMIBoardImages" />
+        <AssociationConnector Association="SDCModel.SMIBoards_GOTO_SMIBoardImages" />
+        <AssociationConnector Association="SDCModel.SMIBoardType_GOTO_SMIBoardManufacturers" />
+        <AssociationConnector Association="SDCModel.Company_GOTO_Operators" />
+        <AssociationConnector Association="SDCModel.Country_To_Company_FK" />
+        <AssociationConnector Association="SDCModel.Country_To_Contact_FK" />
+        <AssociationConnector Association="SDCModel.OperatorVenue_GOTO_Contacts" />
+        <AssociationConnector Association="SDCModel.Titles_To_Contacts_FK" />
+        <AssociationConnector Association="SDCModel.Countries_GOTO_Operators" />
+        <AssociationConnector Association="SDCModel.Countries_GOTO_OperatorVenues" />
+        <AssociationConnector Association="SDCModel.CourierService_GOTO_SMIBReturnReports" />
+        <AssociationConnector Association="SDCModel.SlotImages_GOTO_ImageTypes" />
+        <AssociationConnector Association="SDCModel.ManufacturerModel_GOTO_Slots" />
+        <AssociationConnector Association="SDCModel.Manufacturers_GOTO_ManufacturerModels" />
+        <AssociationConnector Association="SDCModel.Manufacturers_GOTO_Slots" />
+        <AssociationConnector Association="SDCModel.Operators_GOTO_OperatorVenues" />
+        <AssociationConnector Association="SDCModel.OperatorTypes_GOTO_Operators" />
+        <AssociationConnector Association="SDCModel.OperatorVenue_GOTO_SlotImages" />
+        <AssociationConnector Association="SDCModel.OperatorVenue_GOTO_Slots" />
+        <AssociationConnector Association="SDCModel.Reports_GOTO_Returns" />
+        <AssociationConnector Association="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers" />
+        <AssociationConnector Association="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardTypes" />
+        <AssociationConnector Association="SDCModel.FK_Tbl_SimCards_Tbl_SimCardBatches" />
+        <AssociationConnector Association="SDCModel.Slots_GOTO_SlotHarnesses" />
+        <AssociationConnector Association="SDCModel.Slots_GOTO_SlotImages" />
+        <AssociationConnector Association="SDCModel.SlotModels_GOTO_Slots" />
+        <AssociationConnector Association="SDCModel.SlotName_GOTO_Slots" />
+        <AssociationConnector Association="SDCModel.Slots_GOTO_Tracker" />
+        <AssociationConnector Association="SDCModel.SlotStatus_GOTO_Slots" />
+        <AssociationConnector Association="SDCModel.SlotType_GOTO_Slots" />
+        <EntityTypeShape EntityType="SDCModel.Configuration" Width="1.5" PointX="17" PointY="20.125" />
+        <AssociationConnector Association="SDCModel.FK_Tbl_Configuration_Tbl_SMIBoards" />
+        <AssociationConnector Association="SDCModel.FK_Tbl_Configuration_Tbl_SimCards" />
+        <AssociationConnector Association="SDCModel.Slots_GOTO_Configuration" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

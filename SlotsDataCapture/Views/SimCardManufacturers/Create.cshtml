@@ -1,0 +1,56 @@
+﻿@model SlotsDataCapture.ENTITIES.SimCardManufacturers
+@{ViewBag.Title = "Create";}
+
+
+    <div class="container-fluid">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-top-container">
+                <div class="card form-rounder">
+                    <div class="card-header">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-create">Add</span>Record</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="form-location">Add<span class="form-location-bold">Sim Card Manufacturer</span></p>
+                        <div class="row  form-row-form-content">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="form-row mt-8">
+                                    <div class="col-sm-6 pb-3">
+                                        <span class="form-style-create">
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                        <label for="lbl_name" class="lbl-01">Manufacturer:</label>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row-form-controls">
+                        <div class="col-sm-6">
+                            <input type="submit" value="Create" class="btn btn-outline-info " />
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.ActionLink("Back To Admin", "Index", "SimCardManufacturers", null, new { @class = "btn btn-outline-primary" })
+                        </div>
+                    </div>
+                    <div class="card-header border-0">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <div>
+                                    @Html.Partial("footer")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>

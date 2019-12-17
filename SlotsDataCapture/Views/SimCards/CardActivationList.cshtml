@@ -1,0 +1,144 @@
+﻿
+
+@using System.Linq.Expressions
+@*@model PagedList.IPagedList<SlotsDataCapture.ENTITIES.SimCards>*@
+@model List<SlotsDataCapture.ENTITIES.SimCards>
+@using PagedList;
+@using PagedList.Mvc;
+@{ViewBag.Title = "Index";}
+<div class="container-fluid">
+    <div class="form-parent-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5>Administration <span class="title-colour-sector">Sim Card Activation </span>Listing</h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+
+
+
+            @*BEGIN BOARD FORM*@
+            @using (@Html.BeginForm("CardActivationList", "SimCards", FormMethod.Get))
+            {
+                <form>
+                    <br />
+                    <div class="container py-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-search"></i>
+                                <label for="lbl_searchsmibs" class="form-item-title">Search Sim Cards</label>
+                            </div>
+                        </div>
+                        @*Radio button controls begin*@
+                        <div class="row">
+                            <div class="form-check">
+                                <span class="rb-display form-control-item">
+                                    @Html.RadioButton("searchBy", "serial", true)
+                                    <text class="rb-text">Card Number</text>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-check">
+                                <span class="rb-display form-control-item-active">
+                                    @Html.RadioButton("searchBy", "IsActive")
+                                    <text class="rb-text">Active Card</text>
+                                </span>
+                            </div>
+                            <div class="form-check">
+                                <span class="rb-display form-control-item-inactive">
+                                    @Html.RadioButton("searchBy", "IsInactive")
+                                    <text class="rb-text">Inactive Card</text>
+                                </span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row">
+
+                        </div>
+
+                        @*Radio button controls end*@
+                        <br />
+                    </div>
+                    <div class="container py-6">
+                        <fieldset>
+                            @*Search input controls begin*@
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    @Html.TextBox("search", null, new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" value="search" class="btn btn-primary">
+                                        <span class="btn-search btn-primary">Search</span>
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                                @*Search input controls end*@
+                            </div>
+                            <br />
+                        </fieldset>
+                    </div>
+                    <div class="container py-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-control-item"><i class="fa fa-dashboard"></i> Total Records @Html.Raw(ViewBag.TotalRecords) </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-control-item"><i class="fa fa-dashboard"></i> Total Active Cards @Html.Raw(ViewBag.TotalActiveRecords) </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md">
+                                @*<ul class="pagination">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", null, new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"], sortBy = Request["sortBy"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+                                </ul>*@
+                            </div>
+                        </div>
+                    </div> @*Close Card Body*@
+                </form>
+            }
+        </div> @*Close Main Card*@
+
+        @using (@Html.BeginForm("CardActivationList", "SimCards", FormMethod.Post))
+
+        {
+            @Html.ValidationSummary(true)
+            <table class="table table-hover">
+                <tr>
+                    <th></th>
+                    <th>Activation Status</th>
+                    <th>Serial Number</th>
+                    <th>Serial Mobile</th>
+                </tr>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@Html.HiddenFor(model => model[i].SIMCardID) </td>
+                        <td>@Html.EditorFor(model => model[i].IsActive)</td>
+                        <td>@Html.EditorFor(model => model[i].SerialNumber)</td>
+                        <td>@Html.EditorFor(model => model[i].MobileNumber)</td>
+                        <td>@Html.HiddenFor(model => model[i].SIMBatchID)</td>
+                        <td>@Html.HiddenFor(model => model[i].ActivatedOn)</td>
+                        <td>@Html.HiddenFor(model => model[i].IsAvailable)</td>
+                    </tr>
+
+                    @ViewBag.Message
+                }
+            </table>
+            <p><input type="submit" value="Save" class="btn btn-danger btn-lg" /></p>
+
+        }
+
+
+    </div>@*Close Parent Container*@
+</div> @*Close Fluid Container*@

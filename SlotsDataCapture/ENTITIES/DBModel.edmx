@@ -1,0 +1,2500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_BoardAerials">
+          <Key>
+            <PropertyRef Name="SMIBAerialID" />
+          </Key>
+          <Property Name="SMIBAerialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_BoardBatches">
+          <Key>
+            <PropertyRef Name="SMIBatchID" />
+          </Key>
+          <Property Name="SMIBatchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMIB_ManufacturerID" Type="int" />
+          <Property Name="SMIBoardTypeID" Type="int" />
+          <Property Name="ReceivedOn" Type="datetime" Nullable="false" />
+          <Property Name="BatchNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitsReceived" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BoardLocation" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tbl_BoardImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMIBID" Type="int" Nullable="false" />
+          <Property Name="ImageTypeID" Type="int" Nullable="false" />
+          <Property Name="VenueID" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="600" />
+        </EntityType>
+        <EntityType Name="Tbl_BoardManufacturers">
+          <Key>
+            <PropertyRef Name="SMIB_CardManufacturerID" />
+          </Key>
+          <Property Name="SMIB_CardManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMIBoardTypeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Boards">
+          <Key>
+            <PropertyRef Name="SMIBID" />
+          </Key>
+          <Property Name="SMIBID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMIBatchID" Type="int" Nullable="false" />
+          <Property Name="SMIBAerialID" Type="int" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="IsAvailable" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_BoardTypes">
+          <Key>
+            <PropertyRef Name="SMIBoardTypeID" />
+          </Key>
+          <Property Name="SMIBoardTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="10" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="18" />
+          <Property Name="Email" Type="nvarchar" MaxLength="120" />
+          <Property Name="Website" Type="nvarchar" MaxLength="120" />
+          <Property Name="AddressOne" Type="nvarchar" MaxLength="60" />
+          <Property Name="AddressTwo" Type="nvarchar" MaxLength="60" />
+          <Property Name="Town" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Configuration">
+          <Key>
+            <PropertyRef Name="ConfigurationID" />
+          </Key>
+          <Property Name="ConfigurationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIMCardID" Type="int" Nullable="false" />
+          <Property Name="SIM_ActivatedOn" Type="datetime" Nullable="false" />
+          <Property Name="SIM_DeactivatedOn" Type="datetime" />
+          <Property Name="SIMCardNowAssigned" Type="bit" Nullable="false" />
+          <Property Name="SMIBID" Type="int" Nullable="false" />
+          <Property Name="SMIB_ActivatedOn" Type="datetime" Nullable="false" />
+          <Property Name="SMIB_DeactivatedOn" Type="datetime" />
+          <Property Name="SMIBoardNowAssigned" Type="bit" Nullable="false" />
+          <Property Name="SlotID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Contacts">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VenueID" Type="int" Nullable="false" />
+          <Property Name="TitleID" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Company" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="120" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="14" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Countries">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_CourierService">
+          <Key>
+            <PropertyRef Name="CourierID" />
+          </Key>
+          <Property Name="CourierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ImageTypes">
+          <Key>
+            <PropertyRef Name="ImageTypeID" />
+          </Key>
+          <Property Name="ImageTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ManufacturerModels">
+          <Key>
+            <PropertyRef Name="ManufacturerModelID" />
+          </Key>
+          <Property Name="ManufacturerModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Manufacturers">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManufacturedDate" Type="date" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Operators">
+          <Key>
+            <PropertyRef Name="OperatorID" />
+          </Key>
+          <Property Name="OperatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Website" Type="nvarchar" MaxLength="120" />
+          <Property Name="AddressOne" Type="nvarchar" MaxLength="60" />
+          <Property Name="AddressTwo" Type="nvarchar" MaxLength="60" />
+          <Property Name="Town" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_OperatorTypes">
+          <Key>
+            <PropertyRef Name="OperatorTypeID" />
+          </Key>
+          <Property Name="OperatorTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_OperatorVenues">
+          <Key>
+            <PropertyRef Name="VenueID" />
+          </Key>
+          <Property Name="VenueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperatorID" Type="int" Nullable="false" />
+          <Property Name="OperatorTypeID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Permit" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Manager" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="120" />
+          <Property Name="AddressOne" Type="nvarchar" MaxLength="60" />
+          <Property Name="AddressTwo" Type="nvarchar" MaxLength="100" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="Town" Type="nvarchar" MaxLength="18" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Reports">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DeviceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeviceSerialNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Returns">
+          <Key>
+            <PropertyRef Name="ReturnID" />
+          </Key>
+          <Property Name="ReturnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportID" Type="int" Nullable="false" />
+          <Property Name="CourierID" Type="int" Nullable="false" />
+          <Property Name="ReturnDate" Type="datetime" Nullable="false" />
+          <Property Name="ReturnedBy" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="TrackingNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Dispatched" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SimCardBatches">
+          <Key>
+            <PropertyRef Name="SimBatchID" />
+          </Key>
+          <Property Name="SimBatchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIM_ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="SIM_CardTypeID" Type="int" Nullable="false" />
+          <Property Name="ReceivedOn" Type="datetime" Nullable="false" />
+          <Property Name="BatchReference" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="UnitsReceived" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardLocation" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SimCardManufacturers">
+          <Key>
+            <PropertyRef Name="SIM_CardManufacturerID" />
+          </Key>
+          <Property Name="SIM_CardManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SimCards">
+          <Key>
+            <PropertyRef Name="SIMCardID" />
+          </Key>
+          <Property Name="SIMCardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIMBatchID" Type="int" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="ActivatedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsAvailable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SimCardTypes">
+          <Key>
+            <PropertyRef Name="SIM_CardTypeID" />
+          </Key>
+          <Property Name="SIM_CardTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SlotHarnesses">
+          <Key>
+            <PropertyRef Name="SlotHarnessID" />
+          </Key>
+          <Property Name="SlotHarnessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlotID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CableLength" Type="nvarchar" MaxLength="15" />
+          <Property Name="COM_Jumper_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="COM_Jumper_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="COM_Power_Jumper_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="BS_DataConnect" Type="nvarchar" MaxLength="50" />
+          <Property Name="BS_PowerConnect" Type="nvarchar" MaxLength="50" />
+          <Property Name="BS_DataConnectType" Type="nvarchar" MaxLength="50" />
+          <Property Name="BS_DataConnect_PinOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="BS_PowerConnect_PinOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="DS_DataConnect" Type="nvarchar" MaxLength="50" />
+          <Property Name="DS_PowerConnect" Type="nvarchar" MaxLength="50" />
+          <Property Name="DS_DataConnectType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DS_DataConnect_PinOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="DS_PowerConnect_PinOut" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_SlotImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SlotID" Type="int" Nullable="false" />
+          <Property Name="ImageTypeID" Type="int" Nullable="false" />
+          <Property Name="VenueID" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ImagePath" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="600" />
+        </EntityType>
+        <EntityType Name="Tbl_SlotModels">
+          <Key>
+            <PropertyRef Name="SlotModelID" />
+          </Key>
+          <Property Name="SlotModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SlotName">
+          <Key>
+            <PropertyRef Name="SlotNameID" />
+          </Key>
+          <Property Name="SlotNameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Slots">
+          <Key>
+            <PropertyRef Name="SlotID" />
+          </Key>
+          <Property Name="SlotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VenueID" Type="int" Nullable="false" />
+          <Property Name="SlotTypeID" Type="int" Nullable="false" />
+          <Property Name="SlotStatusID" Type="int" Nullable="false" />
+          <Property Name="SlotModelID" Type="int" Nullable="false" />
+          <Property Name="SlotNameID" Type="int" Nullable="false" />
+          <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="ManufacturerModelID" Type="int" Nullable="false" />
+          <Property Name="IsOriginal" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsAvailable" Type="bit" Nullable="false" />
+          <Property Name="DeviceCommissioned" Type="datetime" />
+          <Property Name="DeviceDecommissioned" Type="datetime" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="34" Nullable="false" />
+          <Property Name="AssetNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="DeviceLocation" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SlotStatus">
+          <Key>
+            <PropertyRef Name="SlotStatusID" />
+          </Key>
+          <Property Name="SlotStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SlotTypes">
+          <Key>
+            <PropertyRef Name="SlotTypeID" />
+          </Key>
+          <Property Name="SlotTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Titles">
+          <Key>
+            <PropertyRef Name="TitleID" />
+          </Key>
+          <Property Name="TitleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Tracker">
+          <Key>
+            <PropertyRef Name="TrackerID" />
+          </Key>
+          <Property Name="TrackerID" Type="int" Nullable="false" />
+          <Property Name="SlotID" Type="int" Nullable="false" />
+          <Property Name="Longitude" Type="decimal" Precision="10" Scale="8" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Precision="10" Scale="8" Nullable="false" />
+          <Property Name="DistanceInKilometers" Type="float" />
+          <Property Name="Scale" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Company_GOTO_Operators">
+          <End Role="Tbl_Company" Type="Self.Tbl_Company" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_Operators" Type="Self.Tbl_Operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Tbl_Operators">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Countries_GOTO_Operators">
+          <End Role="Tbl_Countries" Type="Self.Tbl_Countries" Multiplicity="1" />
+          <End Role="Tbl_Operators" Type="Self.Tbl_Operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Operators">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Countries_GOTO_OperatorVenues">
+          <End Role="Tbl_Countries" Type="Self.Tbl_Countries" Multiplicity="1" />
+          <End Role="Tbl_OperatorVenues" Type="Self.Tbl_OperatorVenues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_OperatorVenues">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country_To_Company_FK">
+          <End Role="Tbl_Countries" Type="Self.Tbl_Countries" Multiplicity="1" />
+          <End Role="Tbl_Company" Type="Self.Tbl_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Company">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country_To_Contact_FK">
+          <End Role="Tbl_Countries" Type="Self.Tbl_Countries" Multiplicity="1" />
+          <End Role="Tbl_Contacts" Type="Self.Tbl_Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Contacts">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CourierService_GOTO_SMIBReturnReports">
+          <End Role="Tbl_CourierService" Type="Self.Tbl_CourierService" Multiplicity="1" />
+          <End Role="Tbl_Returns" Type="Self.Tbl_Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CourierService">
+              <PropertyRef Name="CourierID" />
+            </Principal>
+            <Dependent Role="Tbl_Returns">
+              <PropertyRef Name="CourierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Configuration_Tbl_SimCards">
+          <End Role="Tbl_SimCards" Type="Self.Tbl_SimCards" Multiplicity="1" />
+          <End Role="Tbl_Configuration" Type="Self.Tbl_Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SimCards">
+              <PropertyRef Name="SIMCardID" />
+            </Principal>
+            <Dependent Role="Tbl_Configuration">
+              <PropertyRef Name="SIMCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Configuration_Tbl_SMIBoards">
+          <End Role="Tbl_Boards" Type="Self.Tbl_Boards" Multiplicity="1" />
+          <End Role="Tbl_Configuration" Type="Self.Tbl_Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Boards">
+              <PropertyRef Name="SMIBID" />
+            </Principal>
+            <Dependent Role="Tbl_Configuration">
+              <PropertyRef Name="SMIBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers">
+          <End Role="Tbl_SimCardManufacturers" Type="Self.Tbl_SimCardManufacturers" Multiplicity="1" />
+          <End Role="Tbl_SimCardBatches" Type="Self.Tbl_SimCardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SimCardManufacturers">
+              <PropertyRef Name="SIM_CardManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_SimCardBatches">
+              <PropertyRef Name="SIM_ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SimCardBatches_Tbl_SimCardTypes">
+          <End Role="Tbl_SimCardTypes" Type="Self.Tbl_SimCardTypes" Multiplicity="1" />
+          <End Role="Tbl_SimCardBatches" Type="Self.Tbl_SimCardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SimCardTypes">
+              <PropertyRef Name="SIM_CardTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_SimCardBatches">
+              <PropertyRef Name="SIM_CardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SimCards_Tbl_SimCardBatches">
+          <End Role="Tbl_SimCardBatches" Type="Self.Tbl_SimCardBatches" Multiplicity="1" />
+          <End Role="Tbl_SimCards" Type="Self.Tbl_SimCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SimCardBatches">
+              <PropertyRef Name="SimBatchID" />
+            </Principal>
+            <Dependent Role="Tbl_SimCards">
+              <PropertyRef Name="SIMBatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMIBoards_Tbl_SMIBAerial">
+          <End Role="Tbl_BoardAerials" Type="Self.Tbl_BoardAerials" Multiplicity="1" />
+          <End Role="Tbl_Boards" Type="Self.Tbl_Boards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardAerials">
+              <PropertyRef Name="SMIBAerialID" />
+            </Principal>
+            <Dependent Role="Tbl_Boards">
+              <PropertyRef Name="SMIBAerialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMIBoards_Tbl_SMIBoardBatches">
+          <End Role="Tbl_BoardBatches" Type="Self.Tbl_BoardBatches" Multiplicity="1" />
+          <End Role="Tbl_Boards" Type="Self.Tbl_Boards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardBatches">
+              <PropertyRef Name="SMIBatchID" />
+            </Principal>
+            <Dependent Role="Tbl_Boards">
+              <PropertyRef Name="SMIBatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ImageTypes_GOTO_SMIBoardImages">
+          <End Role="Tbl_ImageTypes" Type="Self.Tbl_ImageTypes" Multiplicity="1" />
+          <End Role="Tbl_BoardImages" Type="Self.Tbl_BoardImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_ImageTypes">
+              <PropertyRef Name="ImageTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardImages">
+              <PropertyRef Name="ImageTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ManufacturerModel_GOTO_Slots">
+          <End Role="Tbl_ManufacturerModels" Type="Self.Tbl_ManufacturerModels" Multiplicity="1" />
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_ManufacturerModels">
+              <PropertyRef Name="ManufacturerModelID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="ManufacturerModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Manufacturers_GOTO_ManufacturerModels">
+          <End Role="Tbl_Manufacturers" Type="Self.Tbl_Manufacturers" Multiplicity="1" />
+          <End Role="Tbl_ManufacturerModels" Type="Self.Tbl_ManufacturerModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_ManufacturerModels">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Manufacturers_GOTO_Slots">
+          <End Role="Tbl_Manufacturers" Type="Self.Tbl_Manufacturers" Multiplicity="1" />
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Operators_GOTO_OperatorVenues">
+          <End Role="Tbl_Operators" Type="Self.Tbl_Operators" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_OperatorVenues" Type="Self.Tbl_OperatorVenues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Operators">
+              <PropertyRef Name="OperatorID" />
+            </Principal>
+            <Dependent Role="Tbl_OperatorVenues">
+              <PropertyRef Name="OperatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorTypes_GOTO_Operators">
+          <End Role="Tbl_OperatorTypes" Type="Self.Tbl_OperatorTypes" Multiplicity="1" />
+          <End Role="Tbl_OperatorVenues" Type="Self.Tbl_OperatorVenues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorTypes">
+              <PropertyRef Name="OperatorTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_OperatorVenues">
+              <PropertyRef Name="OperatorTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_Contacts">
+          <End Role="Tbl_OperatorVenues" Type="Self.Tbl_OperatorVenues" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_Contacts" Type="Self.Tbl_Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_Contacts">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_SlotImages">
+          <End Role="Tbl_OperatorVenues" Type="Self.Tbl_OperatorVenues" Multiplicity="1" />
+          <End Role="Tbl_SlotImages" Type="Self.Tbl_SlotImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotImages">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_Slots">
+          <End Role="Tbl_OperatorVenues" Type="Self.Tbl_OperatorVenues" Multiplicity="1" />
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_SMIBoardImages">
+          <End Role="Tbl_OperatorVenues" Type="Self.Tbl_OperatorVenues" Multiplicity="1" />
+          <End Role="Tbl_BoardImages" Type="Self.Tbl_BoardImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardImages">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reports_GOTO_Returns">
+          <End Role="Tbl_Reports" Type="Self.Tbl_Reports" Multiplicity="1" />
+          <End Role="Tbl_Returns" Type="Self.Tbl_Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="Tbl_Returns">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotImages_GOTO_ImageTypes">
+          <End Role="Tbl_ImageTypes" Type="Self.Tbl_ImageTypes" Multiplicity="1" />
+          <End Role="Tbl_SlotImages" Type="Self.Tbl_SlotImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_ImageTypes">
+              <PropertyRef Name="ImageTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotImages">
+              <PropertyRef Name="ImageTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotModels_GOTO_Slots">
+          <End Role="Tbl_SlotModels" Type="Self.Tbl_SlotModels" Multiplicity="1" />
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotModels">
+              <PropertyRef Name="SlotModelID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotName_GOTO_Slots">
+          <End Role="Tbl_SlotName" Type="Self.Tbl_SlotName" Multiplicity="1" />
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotName">
+              <PropertyRef Name="SlotNameID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotNameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_Configuration">
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="1" />
+          <End Role="Tbl_Configuration" Type="Self.Tbl_Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_Configuration">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_SlotHarnesses">
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_SlotHarnesses" Type="Self.Tbl_SlotHarnesses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotHarnesses">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_SlotImages">
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_SlotImages" Type="Self.Tbl_SlotImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotImages">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_Tracker">
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="1" />
+          <End Role="Tbl_Tracker" Type="Self.Tbl_Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_Tracker">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotStatus_GOTO_Slots">
+          <End Role="Tbl_SlotStatus" Type="Self.Tbl_SlotStatus" Multiplicity="1" />
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotStatus">
+              <PropertyRef Name="SlotStatusID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotType_GOTO_Slots">
+          <End Role="Tbl_SlotTypes" Type="Self.Tbl_SlotTypes" Multiplicity="1" />
+          <End Role="Tbl_Slots" Type="Self.Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotTypes">
+              <PropertyRef Name="SlotTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoardManufacturers_GOTO_SMIBCardBatches">
+          <End Role="Tbl_BoardManufacturers" Type="Self.Tbl_BoardManufacturers" Multiplicity="0..1" />
+          <End Role="Tbl_BoardBatches" Type="Self.Tbl_BoardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardManufacturers">
+              <PropertyRef Name="SMIB_CardManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardBatches">
+              <PropertyRef Name="SMIB_ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoards_GOTO_SMIBoardImages">
+          <End Role="Tbl_Boards" Type="Self.Tbl_Boards" Multiplicity="1" />
+          <End Role="Tbl_BoardImages" Type="Self.Tbl_BoardImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Boards">
+              <PropertyRef Name="SMIBID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardImages">
+              <PropertyRef Name="SMIBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoardType_GOTO_SMIBoardManufacturers">
+          <End Role="Tbl_BoardTypes" Type="Self.Tbl_BoardTypes" Multiplicity="1" />
+          <End Role="Tbl_BoardManufacturers" Type="Self.Tbl_BoardManufacturers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardTypes">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardManufacturers">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoardTypes_GOTO_SMIBoardBatches">
+          <End Role="Tbl_BoardTypes" Type="Self.Tbl_BoardTypes" Multiplicity="0..1" />
+          <End Role="Tbl_BoardBatches" Type="Self.Tbl_BoardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardTypes">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardBatches">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Titles_To_Contacts_FK">
+          <End Role="Tbl_Titles" Type="Self.Tbl_Titles" Multiplicity="1" />
+          <End Role="Tbl_Contacts" Type="Self.Tbl_Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Titles">
+              <PropertyRef Name="TitleID" />
+            </Principal>
+            <Dependent Role="Tbl_Contacts">
+              <PropertyRef Name="TitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SDCModelStoreContainer">
+          <EntitySet Name="Tbl_BoardAerials" EntityType="Self.Tbl_BoardAerials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BoardBatches" EntityType="Self.Tbl_BoardBatches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BoardImages" EntityType="Self.Tbl_BoardImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BoardManufacturers" EntityType="Self.Tbl_BoardManufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Boards" EntityType="Self.Tbl_Boards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BoardTypes" EntityType="Self.Tbl_BoardTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Company" EntityType="Self.Tbl_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Configuration" EntityType="Self.Tbl_Configuration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Contacts" EntityType="Self.Tbl_Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Countries" EntityType="Self.Tbl_Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_CourierService" EntityType="Self.Tbl_CourierService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ImageTypes" EntityType="Self.Tbl_ImageTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ManufacturerModels" EntityType="Self.Tbl_ManufacturerModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Manufacturers" EntityType="Self.Tbl_Manufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Operators" EntityType="Self.Tbl_Operators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OperatorTypes" EntityType="Self.Tbl_OperatorTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OperatorVenues" EntityType="Self.Tbl_OperatorVenues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Reports" EntityType="Self.Tbl_Reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Returns" EntityType="Self.Tbl_Returns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SimCardBatches" EntityType="Self.Tbl_SimCardBatches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SimCardManufacturers" EntityType="Self.Tbl_SimCardManufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SimCards" EntityType="Self.Tbl_SimCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SimCardTypes" EntityType="Self.Tbl_SimCardTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SlotHarnesses" EntityType="Self.Tbl_SlotHarnesses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SlotImages" EntityType="Self.Tbl_SlotImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SlotModels" EntityType="Self.Tbl_SlotModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SlotName" EntityType="Self.Tbl_SlotName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Slots" EntityType="Self.Tbl_Slots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SlotStatus" EntityType="Self.Tbl_SlotStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SlotTypes" EntityType="Self.Tbl_SlotTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Titles" EntityType="Self.Tbl_Titles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Tracker" EntityType="Self.Tbl_Tracker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Company_GOTO_Operators" Association="Self.Company_GOTO_Operators">
+            <End Role="Tbl_Company" EntitySet="Tbl_Company" />
+            <End Role="Tbl_Operators" EntitySet="Tbl_Operators" />
+          </AssociationSet>
+          <AssociationSet Name="Countries_GOTO_Operators" Association="Self.Countries_GOTO_Operators">
+            <End Role="Tbl_Countries" EntitySet="Tbl_Countries" />
+            <End Role="Tbl_Operators" EntitySet="Tbl_Operators" />
+          </AssociationSet>
+          <AssociationSet Name="Countries_GOTO_OperatorVenues" Association="Self.Countries_GOTO_OperatorVenues">
+            <End Role="Tbl_Countries" EntitySet="Tbl_Countries" />
+            <End Role="Tbl_OperatorVenues" EntitySet="Tbl_OperatorVenues" />
+          </AssociationSet>
+          <AssociationSet Name="Country_To_Company_FK" Association="Self.Country_To_Company_FK">
+            <End Role="Tbl_Countries" EntitySet="Tbl_Countries" />
+            <End Role="Tbl_Company" EntitySet="Tbl_Company" />
+          </AssociationSet>
+          <AssociationSet Name="Country_To_Contact_FK" Association="Self.Country_To_Contact_FK">
+            <End Role="Tbl_Countries" EntitySet="Tbl_Countries" />
+            <End Role="Tbl_Contacts" EntitySet="Tbl_Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="CourierService_GOTO_SMIBReturnReports" Association="Self.CourierService_GOTO_SMIBReturnReports">
+            <End Role="Tbl_CourierService" EntitySet="Tbl_CourierService" />
+            <End Role="Tbl_Returns" EntitySet="Tbl_Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Configuration_Tbl_SimCards" Association="Self.FK_Tbl_Configuration_Tbl_SimCards">
+            <End Role="Tbl_SimCards" EntitySet="Tbl_SimCards" />
+            <End Role="Tbl_Configuration" EntitySet="Tbl_Configuration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Configuration_Tbl_SMIBoards" Association="Self.FK_Tbl_Configuration_Tbl_SMIBoards">
+            <End Role="Tbl_Boards" EntitySet="Tbl_Boards" />
+            <End Role="Tbl_Configuration" EntitySet="Tbl_Configuration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers" Association="Self.FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers">
+            <End Role="Tbl_SimCardManufacturers" EntitySet="Tbl_SimCardManufacturers" />
+            <End Role="Tbl_SimCardBatches" EntitySet="Tbl_SimCardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SimCardBatches_Tbl_SimCardTypes" Association="Self.FK_Tbl_SimCardBatches_Tbl_SimCardTypes">
+            <End Role="Tbl_SimCardTypes" EntitySet="Tbl_SimCardTypes" />
+            <End Role="Tbl_SimCardBatches" EntitySet="Tbl_SimCardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SimCards_Tbl_SimCardBatches" Association="Self.FK_Tbl_SimCards_Tbl_SimCardBatches">
+            <End Role="Tbl_SimCardBatches" EntitySet="Tbl_SimCardBatches" />
+            <End Role="Tbl_SimCards" EntitySet="Tbl_SimCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMIBoards_Tbl_SMIBAerial" Association="Self.FK_Tbl_SMIBoards_Tbl_SMIBAerial">
+            <End Role="Tbl_BoardAerials" EntitySet="Tbl_BoardAerials" />
+            <End Role="Tbl_Boards" EntitySet="Tbl_Boards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMIBoards_Tbl_SMIBoardBatches" Association="Self.FK_Tbl_SMIBoards_Tbl_SMIBoardBatches">
+            <End Role="Tbl_BoardBatches" EntitySet="Tbl_BoardBatches" />
+            <End Role="Tbl_Boards" EntitySet="Tbl_Boards" />
+          </AssociationSet>
+          <AssociationSet Name="ImageTypes_GOTO_SMIBoardImages" Association="Self.ImageTypes_GOTO_SMIBoardImages">
+            <End Role="Tbl_ImageTypes" EntitySet="Tbl_ImageTypes" />
+            <End Role="Tbl_BoardImages" EntitySet="Tbl_BoardImages" />
+          </AssociationSet>
+          <AssociationSet Name="ManufacturerModel_GOTO_Slots" Association="Self.ManufacturerModel_GOTO_Slots">
+            <End Role="Tbl_ManufacturerModels" EntitySet="Tbl_ManufacturerModels" />
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+          </AssociationSet>
+          <AssociationSet Name="Manufacturers_GOTO_ManufacturerModels" Association="Self.Manufacturers_GOTO_ManufacturerModels">
+            <End Role="Tbl_Manufacturers" EntitySet="Tbl_Manufacturers" />
+            <End Role="Tbl_ManufacturerModels" EntitySet="Tbl_ManufacturerModels" />
+          </AssociationSet>
+          <AssociationSet Name="Manufacturers_GOTO_Slots" Association="Self.Manufacturers_GOTO_Slots">
+            <End Role="Tbl_Manufacturers" EntitySet="Tbl_Manufacturers" />
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+          </AssociationSet>
+          <AssociationSet Name="Operators_GOTO_OperatorVenues" Association="Self.Operators_GOTO_OperatorVenues">
+            <End Role="Tbl_Operators" EntitySet="Tbl_Operators" />
+            <End Role="Tbl_OperatorVenues" EntitySet="Tbl_OperatorVenues" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorTypes_GOTO_Operators" Association="Self.OperatorTypes_GOTO_Operators">
+            <End Role="Tbl_OperatorTypes" EntitySet="Tbl_OperatorTypes" />
+            <End Role="Tbl_OperatorVenues" EntitySet="Tbl_OperatorVenues" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_Contacts" Association="Self.OperatorVenue_GOTO_Contacts">
+            <End Role="Tbl_OperatorVenues" EntitySet="Tbl_OperatorVenues" />
+            <End Role="Tbl_Contacts" EntitySet="Tbl_Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_SlotImages" Association="Self.OperatorVenue_GOTO_SlotImages">
+            <End Role="Tbl_OperatorVenues" EntitySet="Tbl_OperatorVenues" />
+            <End Role="Tbl_SlotImages" EntitySet="Tbl_SlotImages" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_Slots" Association="Self.OperatorVenue_GOTO_Slots">
+            <End Role="Tbl_OperatorVenues" EntitySet="Tbl_OperatorVenues" />
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_SMIBoardImages" Association="Self.OperatorVenue_GOTO_SMIBoardImages">
+            <End Role="Tbl_OperatorVenues" EntitySet="Tbl_OperatorVenues" />
+            <End Role="Tbl_BoardImages" EntitySet="Tbl_BoardImages" />
+          </AssociationSet>
+          <AssociationSet Name="Reports_GOTO_Returns" Association="Self.Reports_GOTO_Returns">
+            <End Role="Tbl_Reports" EntitySet="Tbl_Reports" />
+            <End Role="Tbl_Returns" EntitySet="Tbl_Returns" />
+          </AssociationSet>
+          <AssociationSet Name="SlotImages_GOTO_ImageTypes" Association="Self.SlotImages_GOTO_ImageTypes">
+            <End Role="Tbl_ImageTypes" EntitySet="Tbl_ImageTypes" />
+            <End Role="Tbl_SlotImages" EntitySet="Tbl_SlotImages" />
+          </AssociationSet>
+          <AssociationSet Name="SlotModels_GOTO_Slots" Association="Self.SlotModels_GOTO_Slots">
+            <End Role="Tbl_SlotModels" EntitySet="Tbl_SlotModels" />
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+          </AssociationSet>
+          <AssociationSet Name="SlotName_GOTO_Slots" Association="Self.SlotName_GOTO_Slots">
+            <End Role="Tbl_SlotName" EntitySet="Tbl_SlotName" />
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_Configuration" Association="Self.Slots_GOTO_Configuration">
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+            <End Role="Tbl_Configuration" EntitySet="Tbl_Configuration" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_SlotHarnesses" Association="Self.Slots_GOTO_SlotHarnesses">
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+            <End Role="Tbl_SlotHarnesses" EntitySet="Tbl_SlotHarnesses" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_SlotImages" Association="Self.Slots_GOTO_SlotImages">
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+            <End Role="Tbl_SlotImages" EntitySet="Tbl_SlotImages" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_Tracker" Association="Self.Slots_GOTO_Tracker">
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+            <End Role="Tbl_Tracker" EntitySet="Tbl_Tracker" />
+          </AssociationSet>
+          <AssociationSet Name="SlotStatus_GOTO_Slots" Association="Self.SlotStatus_GOTO_Slots">
+            <End Role="Tbl_SlotStatus" EntitySet="Tbl_SlotStatus" />
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+          </AssociationSet>
+          <AssociationSet Name="SlotType_GOTO_Slots" Association="Self.SlotType_GOTO_Slots">
+            <End Role="Tbl_SlotTypes" EntitySet="Tbl_SlotTypes" />
+            <End Role="Tbl_Slots" EntitySet="Tbl_Slots" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoardManufacturers_GOTO_SMIBCardBatches" Association="Self.SMIBoardManufacturers_GOTO_SMIBCardBatches">
+            <End Role="Tbl_BoardManufacturers" EntitySet="Tbl_BoardManufacturers" />
+            <End Role="Tbl_BoardBatches" EntitySet="Tbl_BoardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoards_GOTO_SMIBoardImages" Association="Self.SMIBoards_GOTO_SMIBoardImages">
+            <End Role="Tbl_Boards" EntitySet="Tbl_Boards" />
+            <End Role="Tbl_BoardImages" EntitySet="Tbl_BoardImages" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoardType_GOTO_SMIBoardManufacturers" Association="Self.SMIBoardType_GOTO_SMIBoardManufacturers">
+            <End Role="Tbl_BoardTypes" EntitySet="Tbl_BoardTypes" />
+            <End Role="Tbl_BoardManufacturers" EntitySet="Tbl_BoardManufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoardTypes_GOTO_SMIBoardBatches" Association="Self.SMIBoardTypes_GOTO_SMIBoardBatches">
+            <End Role="Tbl_BoardTypes" EntitySet="Tbl_BoardTypes" />
+            <End Role="Tbl_BoardBatches" EntitySet="Tbl_BoardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="Titles_To_Contacts_FK" Association="Self.Titles_To_Contacts_FK">
+            <End Role="Tbl_Titles" EntitySet="Tbl_Titles" />
+            <End Role="Tbl_Contacts" EntitySet="Tbl_Contacts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SDCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BoardAerials" EntityType="SDCModel.BoardAerials" />
+          <EntitySet Name="BoardBatches" EntityType="SDCModel.BoardBatches" />
+          <EntitySet Name="BoardImages" EntityType="SDCModel.BoardImages" />
+          <EntitySet Name="BoardManufacturers" EntityType="SDCModel.BoardManufacturers" />
+          <EntitySet Name="Boards" EntityType="SDCModel.Boards" />
+          <EntitySet Name="BoardTypes" EntityType="SDCModel.BoardTypes" />
+          <EntitySet Name="Companies" EntityType="SDCModel.Company" />
+          <EntitySet Name="Contacts" EntityType="SDCModel.Contacts" />
+          <EntitySet Name="Countries" EntityType="SDCModel.Countries" />
+          <EntitySet Name="CourierServices" EntityType="SDCModel.CourierService" />
+          <EntitySet Name="ImageTypes" EntityType="SDCModel.ImageTypes" />
+          <EntitySet Name="ManufacturerModels" EntityType="SDCModel.ManufacturerModels" />
+          <EntitySet Name="Manufacturers" EntityType="SDCModel.Manufacturers" />
+          <EntitySet Name="Operators" EntityType="SDCModel.Operators" />
+          <EntitySet Name="OperatorTypes" EntityType="SDCModel.OperatorTypes" />
+          <EntitySet Name="OperatorVenues" EntityType="SDCModel.OperatorVenues" />
+          <EntitySet Name="Reports" EntityType="SDCModel.Reports" />
+          <EntitySet Name="Returns" EntityType="SDCModel.Returns" />
+          <EntitySet Name="SimCardBatches" EntityType="SDCModel.SimCardBatches" />
+          <EntitySet Name="SimCardManufacturers" EntityType="SDCModel.SimCardManufacturers" />
+          <EntitySet Name="SimCards" EntityType="SDCModel.SimCards" />
+          <EntitySet Name="SimCardTypes" EntityType="SDCModel.SimCardTypes" />
+          <EntitySet Name="SlotHarnesses" EntityType="SDCModel.SlotHarnesses" />
+          <EntitySet Name="SlotImages" EntityType="SDCModel.SlotImages" />
+          <EntitySet Name="SlotModels" EntityType="SDCModel.SlotModels" />
+          <EntitySet Name="SlotNames" EntityType="SDCModel.SlotName" />
+          <EntitySet Name="Slots" EntityType="SDCModel.Slots" />
+          <EntitySet Name="SlotStatus" EntityType="SDCModel.SlotStatus" />
+          <EntitySet Name="SlotTypes" EntityType="SDCModel.SlotTypes" />
+          <EntitySet Name="Titles" EntityType="SDCModel.Titles" />
+          <EntitySet Name="Trackers" EntityType="SDCModel.Tracker" />
+          <AssociationSet Name="FK_Tbl_SMIBoards_Tbl_SMIBAerial" Association="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBAerial">
+            <End Role="Tbl_BoardAerials" EntitySet="BoardAerials" />
+            <End Role="Tbl_Boards" EntitySet="Boards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SMIBoards_Tbl_SMIBoardBatches" Association="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBoardBatches">
+            <End Role="Tbl_BoardBatches" EntitySet="BoardBatches" />
+            <End Role="Tbl_Boards" EntitySet="Boards" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoardManufacturers_GOTO_SMIBCardBatches" Association="SDCModel.SMIBoardManufacturers_GOTO_SMIBCardBatches">
+            <End Role="Tbl_BoardManufacturers" EntitySet="BoardManufacturers" />
+            <End Role="Tbl_BoardBatches" EntitySet="BoardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoardTypes_GOTO_SMIBoardBatches" Association="SDCModel.SMIBoardTypes_GOTO_SMIBoardBatches">
+            <End Role="Tbl_BoardTypes" EntitySet="BoardTypes" />
+            <End Role="Tbl_BoardBatches" EntitySet="BoardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="ImageTypes_GOTO_SMIBoardImages" Association="SDCModel.ImageTypes_GOTO_SMIBoardImages">
+            <End Role="Tbl_ImageTypes" EntitySet="ImageTypes" />
+            <End Role="Tbl_BoardImages" EntitySet="BoardImages" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_SMIBoardImages" Association="SDCModel.OperatorVenue_GOTO_SMIBoardImages">
+            <End Role="Tbl_OperatorVenues" EntitySet="OperatorVenues" />
+            <End Role="Tbl_BoardImages" EntitySet="BoardImages" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoards_GOTO_SMIBoardImages" Association="SDCModel.SMIBoards_GOTO_SMIBoardImages">
+            <End Role="Tbl_Boards" EntitySet="Boards" />
+            <End Role="Tbl_BoardImages" EntitySet="BoardImages" />
+          </AssociationSet>
+          <AssociationSet Name="SMIBoardType_GOTO_SMIBoardManufacturers" Association="SDCModel.SMIBoardType_GOTO_SMIBoardManufacturers">
+            <End Role="Tbl_BoardTypes" EntitySet="BoardTypes" />
+            <End Role="Tbl_BoardManufacturers" EntitySet="BoardManufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="Company_GOTO_Operators" Association="SDCModel.Company_GOTO_Operators">
+            <End Role="Tbl_Company" EntitySet="Companies" />
+            <End Role="Tbl_Operators" EntitySet="Operators" />
+          </AssociationSet>
+          <AssociationSet Name="Country_To_Company_FK" Association="SDCModel.Country_To_Company_FK">
+            <End Role="Tbl_Countries" EntitySet="Countries" />
+            <End Role="Tbl_Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="Country_To_Contact_FK" Association="SDCModel.Country_To_Contact_FK">
+            <End Role="Tbl_Countries" EntitySet="Countries" />
+            <End Role="Tbl_Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_Contacts" Association="SDCModel.OperatorVenue_GOTO_Contacts">
+            <End Role="Tbl_OperatorVenues" EntitySet="OperatorVenues" />
+            <End Role="Tbl_Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="Titles_To_Contacts_FK" Association="SDCModel.Titles_To_Contacts_FK">
+            <End Role="Tbl_Titles" EntitySet="Titles" />
+            <End Role="Tbl_Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="Countries_GOTO_Operators" Association="SDCModel.Countries_GOTO_Operators">
+            <End Role="Tbl_Countries" EntitySet="Countries" />
+            <End Role="Tbl_Operators" EntitySet="Operators" />
+          </AssociationSet>
+          <AssociationSet Name="Countries_GOTO_OperatorVenues" Association="SDCModel.Countries_GOTO_OperatorVenues">
+            <End Role="Tbl_Countries" EntitySet="Countries" />
+            <End Role="Tbl_OperatorVenues" EntitySet="OperatorVenues" />
+          </AssociationSet>
+          <AssociationSet Name="CourierService_GOTO_SMIBReturnReports" Association="SDCModel.CourierService_GOTO_SMIBReturnReports">
+            <End Role="Tbl_CourierService" EntitySet="CourierServices" />
+            <End Role="Tbl_Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <AssociationSet Name="SlotImages_GOTO_ImageTypes" Association="SDCModel.SlotImages_GOTO_ImageTypes">
+            <End Role="Tbl_ImageTypes" EntitySet="ImageTypes" />
+            <End Role="Tbl_SlotImages" EntitySet="SlotImages" />
+          </AssociationSet>
+          <AssociationSet Name="ManufacturerModel_GOTO_Slots" Association="SDCModel.ManufacturerModel_GOTO_Slots">
+            <End Role="Tbl_ManufacturerModels" EntitySet="ManufacturerModels" />
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+          </AssociationSet>
+          <AssociationSet Name="Manufacturers_GOTO_ManufacturerModels" Association="SDCModel.Manufacturers_GOTO_ManufacturerModels">
+            <End Role="Tbl_Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Tbl_ManufacturerModels" EntitySet="ManufacturerModels" />
+          </AssociationSet>
+          <AssociationSet Name="Manufacturers_GOTO_Slots" Association="SDCModel.Manufacturers_GOTO_Slots">
+            <End Role="Tbl_Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+          </AssociationSet>
+          <AssociationSet Name="Operators_GOTO_OperatorVenues" Association="SDCModel.Operators_GOTO_OperatorVenues">
+            <End Role="Tbl_Operators" EntitySet="Operators" />
+            <End Role="Tbl_OperatorVenues" EntitySet="OperatorVenues" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorTypes_GOTO_Operators" Association="SDCModel.OperatorTypes_GOTO_Operators">
+            <End Role="Tbl_OperatorTypes" EntitySet="OperatorTypes" />
+            <End Role="Tbl_OperatorVenues" EntitySet="OperatorVenues" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_SlotImages" Association="SDCModel.OperatorVenue_GOTO_SlotImages">
+            <End Role="Tbl_OperatorVenues" EntitySet="OperatorVenues" />
+            <End Role="Tbl_SlotImages" EntitySet="SlotImages" />
+          </AssociationSet>
+          <AssociationSet Name="OperatorVenue_GOTO_Slots" Association="SDCModel.OperatorVenue_GOTO_Slots">
+            <End Role="Tbl_OperatorVenues" EntitySet="OperatorVenues" />
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+          </AssociationSet>
+          <AssociationSet Name="Reports_GOTO_Returns" Association="SDCModel.Reports_GOTO_Returns">
+            <End Role="Tbl_Reports" EntitySet="Reports" />
+            <End Role="Tbl_Returns" EntitySet="Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers" Association="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers">
+            <End Role="Tbl_SimCardManufacturers" EntitySet="SimCardManufacturers" />
+            <End Role="Tbl_SimCardBatches" EntitySet="SimCardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SimCardBatches_Tbl_SimCardTypes" Association="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardTypes">
+            <End Role="Tbl_SimCardTypes" EntitySet="SimCardTypes" />
+            <End Role="Tbl_SimCardBatches" EntitySet="SimCardBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SimCards_Tbl_SimCardBatches" Association="SDCModel.FK_Tbl_SimCards_Tbl_SimCardBatches">
+            <End Role="Tbl_SimCardBatches" EntitySet="SimCardBatches" />
+            <End Role="Tbl_SimCards" EntitySet="SimCards" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_SlotHarnesses" Association="SDCModel.Slots_GOTO_SlotHarnesses">
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+            <End Role="Tbl_SlotHarnesses" EntitySet="SlotHarnesses" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_SlotImages" Association="SDCModel.Slots_GOTO_SlotImages">
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+            <End Role="Tbl_SlotImages" EntitySet="SlotImages" />
+          </AssociationSet>
+          <AssociationSet Name="SlotModels_GOTO_Slots" Association="SDCModel.SlotModels_GOTO_Slots">
+            <End Role="Tbl_SlotModels" EntitySet="SlotModels" />
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+          </AssociationSet>
+          <AssociationSet Name="SlotName_GOTO_Slots" Association="SDCModel.SlotName_GOTO_Slots">
+            <End Role="Tbl_SlotName" EntitySet="SlotNames" />
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_Tracker" Association="SDCModel.Slots_GOTO_Tracker">
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+            <End Role="Tbl_Tracker" EntitySet="Trackers" />
+          </AssociationSet>
+          <AssociationSet Name="SlotStatus_GOTO_Slots" Association="SDCModel.SlotStatus_GOTO_Slots">
+            <End Role="Tbl_SlotStatus" EntitySet="SlotStatus" />
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+          </AssociationSet>
+          <AssociationSet Name="SlotType_GOTO_Slots" Association="SDCModel.SlotType_GOTO_Slots">
+            <End Role="Tbl_SlotTypes" EntitySet="SlotTypes" />
+            <End Role="Tbl_Slots" EntitySet="Slots" />
+          </AssociationSet>
+          <EntitySet Name="Configurations" EntityType="SDCModel.Configuration" />
+          <AssociationSet Name="FK_Tbl_Configuration_Tbl_SMIBoards" Association="SDCModel.FK_Tbl_Configuration_Tbl_SMIBoards">
+            <End Role="Boards" EntitySet="Boards" />
+            <End Role="Tbl_Configuration" EntitySet="Configurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Configuration_Tbl_SimCards" Association="SDCModel.FK_Tbl_Configuration_Tbl_SimCards">
+            <End Role="SimCards" EntitySet="SimCards" />
+            <End Role="Tbl_Configuration" EntitySet="Configurations" />
+          </AssociationSet>
+          <AssociationSet Name="Slots_GOTO_Configuration" Association="SDCModel.Slots_GOTO_Configuration">
+            <End Role="Slots" EntitySet="Slots" />
+            <End Role="Tbl_Configuration" EntitySet="Configurations" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="BoardAerials">
+          <Key>
+            <PropertyRef Name="SMIBAerialID" />
+          </Key>
+          <Property Name="SMIBAerialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Boards" Relationship="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBAerial" FromRole="Tbl_BoardAerials" ToRole="Tbl_Boards" />
+        </EntityType>
+        <EntityType Name="BoardBatches">
+          <Key>
+            <PropertyRef Name="SMIBatchID" />
+          </Key>
+          <Property Name="SMIBatchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMIB_ManufacturerID" Type="Int32" />
+          <Property Name="SMIBoardTypeID" Type="Int32" />
+          <Property Name="ReceivedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BatchNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitsReceived" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BoardLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Boards" Relationship="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBoardBatches" FromRole="Tbl_BoardBatches" ToRole="Tbl_Boards" />
+          <NavigationProperty Name="Tbl_BoardManufacturers" Relationship="SDCModel.SMIBoardManufacturers_GOTO_SMIBCardBatches" FromRole="Tbl_BoardBatches" ToRole="Tbl_BoardManufacturers" />
+          <NavigationProperty Name="Tbl_BoardTypes" Relationship="SDCModel.SMIBoardTypes_GOTO_SMIBoardBatches" FromRole="Tbl_BoardBatches" ToRole="Tbl_BoardTypes" />
+        </EntityType>
+        <EntityType Name="BoardImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMIBID" Type="Int32" Nullable="false" />
+          <Property Name="ImageTypeID" Type="Int32" Nullable="false" />
+          <Property Name="VenueID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_ImageTypes" Relationship="SDCModel.ImageTypes_GOTO_SMIBoardImages" FromRole="Tbl_BoardImages" ToRole="Tbl_ImageTypes" />
+          <NavigationProperty Name="Tbl_OperatorVenues" Relationship="SDCModel.OperatorVenue_GOTO_SMIBoardImages" FromRole="Tbl_BoardImages" ToRole="Tbl_OperatorVenues" />
+          <NavigationProperty Name="Tbl_Boards" Relationship="SDCModel.SMIBoards_GOTO_SMIBoardImages" FromRole="Tbl_BoardImages" ToRole="Tbl_Boards" />
+        </EntityType>
+        <EntityType Name="BoardManufacturers">
+          <Key>
+            <PropertyRef Name="SMIB_CardManufacturerID" />
+          </Key>
+          <Property Name="SMIB_CardManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMIBoardTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_BoardBatches" Relationship="SDCModel.SMIBoardManufacturers_GOTO_SMIBCardBatches" FromRole="Tbl_BoardManufacturers" ToRole="Tbl_BoardBatches" />
+          <NavigationProperty Name="Tbl_BoardTypes" Relationship="SDCModel.SMIBoardType_GOTO_SMIBoardManufacturers" FromRole="Tbl_BoardManufacturers" ToRole="Tbl_BoardTypes" />
+        </EntityType>
+        <EntityType Name="Boards">
+          <Key>
+            <PropertyRef Name="SMIBID" />
+          </Key>
+          <Property Name="SMIBID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMIBatchID" Type="Int32" Nullable="false" />
+          <Property Name="SMIBAerialID" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_BoardAerials" Relationship="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBAerial" FromRole="Tbl_Boards" ToRole="Tbl_BoardAerials" />
+          <NavigationProperty Name="Tbl_BoardBatches" Relationship="SDCModel.FK_Tbl_SMIBoards_Tbl_SMIBoardBatches" FromRole="Tbl_Boards" ToRole="Tbl_BoardBatches" />
+          <NavigationProperty Name="Tbl_BoardImages" Relationship="SDCModel.SMIBoards_GOTO_SMIBoardImages" FromRole="Tbl_Boards" ToRole="Tbl_BoardImages" />
+          <NavigationProperty Name="Tbl_Configuration" Relationship="SDCModel.FK_Tbl_Configuration_Tbl_SMIBoards" FromRole="Boards" ToRole="Tbl_Configuration" />
+        </EntityType>
+        <EntityType Name="BoardTypes">
+          <Key>
+            <PropertyRef Name="SMIBoardTypeID" />
+          </Key>
+          <Property Name="SMIBoardTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_BoardBatches" Relationship="SDCModel.SMIBoardTypes_GOTO_SMIBoardBatches" FromRole="Tbl_BoardTypes" ToRole="Tbl_BoardBatches" />
+          <NavigationProperty Name="Tbl_BoardManufacturers" Relationship="SDCModel.SMIBoardType_GOTO_SMIBoardManufacturers" FromRole="Tbl_BoardTypes" ToRole="Tbl_BoardManufacturers" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="AddressOne" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTwo" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Operators" Relationship="SDCModel.Company_GOTO_Operators" FromRole="Tbl_Company" ToRole="Tbl_Operators" />
+          <NavigationProperty Name="Tbl_Countries" Relationship="SDCModel.Country_To_Company_FK" FromRole="Tbl_Company" ToRole="Tbl_Countries" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VenueID" Type="Int32" Nullable="false" />
+          <Property Name="TitleID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Countries" Relationship="SDCModel.Country_To_Contact_FK" FromRole="Tbl_Contacts" ToRole="Tbl_Countries" />
+          <NavigationProperty Name="Tbl_OperatorVenues" Relationship="SDCModel.OperatorVenue_GOTO_Contacts" FromRole="Tbl_Contacts" ToRole="Tbl_OperatorVenues" />
+          <NavigationProperty Name="Tbl_Titles" Relationship="SDCModel.Titles_To_Contacts_FK" FromRole="Tbl_Contacts" ToRole="Tbl_Titles" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Company" Relationship="SDCModel.Country_To_Company_FK" FromRole="Tbl_Countries" ToRole="Tbl_Company" />
+          <NavigationProperty Name="Tbl_Contacts" Relationship="SDCModel.Country_To_Contact_FK" FromRole="Tbl_Countries" ToRole="Tbl_Contacts" />
+          <NavigationProperty Name="Tbl_Operators" Relationship="SDCModel.Countries_GOTO_Operators" FromRole="Tbl_Countries" ToRole="Tbl_Operators" />
+          <NavigationProperty Name="Tbl_OperatorVenues" Relationship="SDCModel.Countries_GOTO_OperatorVenues" FromRole="Tbl_Countries" ToRole="Tbl_OperatorVenues" />
+        </EntityType>
+        <EntityType Name="CourierService">
+          <Key>
+            <PropertyRef Name="CourierID" />
+          </Key>
+          <Property Name="CourierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Returns" Relationship="SDCModel.CourierService_GOTO_SMIBReturnReports" FromRole="Tbl_CourierService" ToRole="Tbl_Returns" />
+        </EntityType>
+        <EntityType Name="ImageTypes">
+          <Key>
+            <PropertyRef Name="ImageTypeID" />
+          </Key>
+          <Property Name="ImageTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_BoardImages" Relationship="SDCModel.ImageTypes_GOTO_SMIBoardImages" FromRole="Tbl_ImageTypes" ToRole="Tbl_BoardImages" />
+          <NavigationProperty Name="Tbl_SlotImages" Relationship="SDCModel.SlotImages_GOTO_ImageTypes" FromRole="Tbl_ImageTypes" ToRole="Tbl_SlotImages" />
+        </EntityType>
+        <EntityType Name="ManufacturerModels">
+          <Key>
+            <PropertyRef Name="ManufacturerModelID" />
+          </Key>
+          <Property Name="ManufacturerModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.ManufacturerModel_GOTO_Slots" FromRole="Tbl_ManufacturerModels" ToRole="Tbl_Slots" />
+          <NavigationProperty Name="Tbl_Manufacturers" Relationship="SDCModel.Manufacturers_GOTO_ManufacturerModels" FromRole="Tbl_ManufacturerModels" ToRole="Tbl_Manufacturers" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManufacturedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_ManufacturerModels" Relationship="SDCModel.Manufacturers_GOTO_ManufacturerModels" FromRole="Tbl_Manufacturers" ToRole="Tbl_ManufacturerModels" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.Manufacturers_GOTO_Slots" FromRole="Tbl_Manufacturers" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="Operators">
+          <Key>
+            <PropertyRef Name="OperatorID" />
+          </Key>
+          <Property Name="OperatorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="AddressOne" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTwo" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Company" Relationship="SDCModel.Company_GOTO_Operators" FromRole="Tbl_Operators" ToRole="Tbl_Company" />
+          <NavigationProperty Name="Tbl_Countries" Relationship="SDCModel.Countries_GOTO_Operators" FromRole="Tbl_Operators" ToRole="Tbl_Countries" />
+          <NavigationProperty Name="Tbl_OperatorVenues" Relationship="SDCModel.Operators_GOTO_OperatorVenues" FromRole="Tbl_Operators" ToRole="Tbl_OperatorVenues" />
+        </EntityType>
+        <EntityType Name="OperatorTypes">
+          <Key>
+            <PropertyRef Name="OperatorTypeID" />
+          </Key>
+          <Property Name="OperatorTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_OperatorVenues" Relationship="SDCModel.OperatorTypes_GOTO_Operators" FromRole="Tbl_OperatorTypes" ToRole="Tbl_OperatorVenues" />
+        </EntityType>
+        <EntityType Name="OperatorVenues">
+          <Key>
+            <PropertyRef Name="VenueID" />
+          </Key>
+          <Property Name="VenueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperatorID" Type="Int32" Nullable="false" />
+          <Property Name="OperatorTypeID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Permit" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="AddressOne" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTwo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_BoardImages" Relationship="SDCModel.OperatorVenue_GOTO_SMIBoardImages" FromRole="Tbl_OperatorVenues" ToRole="Tbl_BoardImages" />
+          <NavigationProperty Name="Tbl_Contacts" Relationship="SDCModel.OperatorVenue_GOTO_Contacts" FromRole="Tbl_OperatorVenues" ToRole="Tbl_Contacts" />
+          <NavigationProperty Name="Tbl_Countries" Relationship="SDCModel.Countries_GOTO_OperatorVenues" FromRole="Tbl_OperatorVenues" ToRole="Tbl_Countries" />
+          <NavigationProperty Name="Tbl_Operators" Relationship="SDCModel.Operators_GOTO_OperatorVenues" FromRole="Tbl_OperatorVenues" ToRole="Tbl_Operators" />
+          <NavigationProperty Name="Tbl_OperatorTypes" Relationship="SDCModel.OperatorTypes_GOTO_Operators" FromRole="Tbl_OperatorVenues" ToRole="Tbl_OperatorTypes" />
+          <NavigationProperty Name="Tbl_SlotImages" Relationship="SDCModel.OperatorVenue_GOTO_SlotImages" FromRole="Tbl_OperatorVenues" ToRole="Tbl_SlotImages" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.OperatorVenue_GOTO_Slots" FromRole="Tbl_OperatorVenues" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceSerialNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Returns" Relationship="SDCModel.Reports_GOTO_Returns" FromRole="Tbl_Reports" ToRole="Tbl_Returns" />
+        </EntityType>
+        <EntityType Name="Returns">
+          <Key>
+            <PropertyRef Name="ReturnID" />
+          </Key>
+          <Property Name="ReturnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="CourierID" Type="Int32" Nullable="false" />
+          <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReturnedBy" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="TrackingNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dispatched" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_CourierService" Relationship="SDCModel.CourierService_GOTO_SMIBReturnReports" FromRole="Tbl_Returns" ToRole="Tbl_CourierService" />
+          <NavigationProperty Name="Tbl_Reports" Relationship="SDCModel.Reports_GOTO_Returns" FromRole="Tbl_Returns" ToRole="Tbl_Reports" />
+        </EntityType>
+        <EntityType Name="SimCardBatches">
+          <Key>
+            <PropertyRef Name="SimBatchID" />
+          </Key>
+          <Property Name="SimBatchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIM_ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="SIM_CardTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ReceivedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BatchReference" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UnitsReceived" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CardLocation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_SimCardManufacturers" Relationship="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers" FromRole="Tbl_SimCardBatches" ToRole="Tbl_SimCardManufacturers" />
+          <NavigationProperty Name="Tbl_SimCardTypes" Relationship="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardTypes" FromRole="Tbl_SimCardBatches" ToRole="Tbl_SimCardTypes" />
+          <NavigationProperty Name="Tbl_SimCards" Relationship="SDCModel.FK_Tbl_SimCards_Tbl_SimCardBatches" FromRole="Tbl_SimCardBatches" ToRole="Tbl_SimCards" />
+        </EntityType>
+        <EntityType Name="SimCardManufacturers">
+          <Key>
+            <PropertyRef Name="SIM_CardManufacturerID" />
+          </Key>
+          <Property Name="SIM_CardManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_SimCardBatches" Relationship="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers" FromRole="Tbl_SimCardManufacturers" ToRole="Tbl_SimCardBatches" />
+        </EntityType>
+        <EntityType Name="SimCards">
+          <Key>
+            <PropertyRef Name="SIMCardID" />
+          </Key>
+          <Property Name="SIMCardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIMBatchID" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ActivatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_SimCardBatches" Relationship="SDCModel.FK_Tbl_SimCards_Tbl_SimCardBatches" FromRole="Tbl_SimCards" ToRole="Tbl_SimCardBatches" />
+          <NavigationProperty Name="Tbl_Configuration" Relationship="SDCModel.FK_Tbl_Configuration_Tbl_SimCards" FromRole="SimCards" ToRole="Tbl_Configuration" />
+        </EntityType>
+        <EntityType Name="SimCardTypes">
+          <Key>
+            <PropertyRef Name="SIM_CardTypeID" />
+          </Key>
+          <Property Name="SIM_CardTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_SimCardBatches" Relationship="SDCModel.FK_Tbl_SimCardBatches_Tbl_SimCardTypes" FromRole="Tbl_SimCardTypes" ToRole="Tbl_SimCardBatches" />
+        </EntityType>
+        <EntityType Name="SlotHarnesses">
+          <Key>
+            <PropertyRef Name="SlotHarnessID" />
+          </Key>
+          <Property Name="SlotHarnessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlotID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CableLength" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="COM_Jumper_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COM_Jumper_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COM_Power_Jumper_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BS_DataConnect" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BS_PowerConnect" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BS_DataConnectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BS_DataConnect_PinOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BS_PowerConnect_PinOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DS_DataConnect" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DS_PowerConnect" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DS_DataConnectType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DS_DataConnect_PinOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DS_PowerConnect_PinOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.Slots_GOTO_SlotHarnesses" FromRole="Tbl_SlotHarnesses" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="SlotImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SlotID" Type="Int32" Nullable="false" />
+          <Property Name="ImageTypeID" Type="Int32" Nullable="false" />
+          <Property Name="VenueID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_ImageTypes" Relationship="SDCModel.SlotImages_GOTO_ImageTypes" FromRole="Tbl_SlotImages" ToRole="Tbl_ImageTypes" />
+          <NavigationProperty Name="Tbl_OperatorVenues" Relationship="SDCModel.OperatorVenue_GOTO_SlotImages" FromRole="Tbl_SlotImages" ToRole="Tbl_OperatorVenues" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.Slots_GOTO_SlotImages" FromRole="Tbl_SlotImages" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="SlotModels">
+          <Key>
+            <PropertyRef Name="SlotModelID" />
+          </Key>
+          <Property Name="SlotModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.SlotModels_GOTO_Slots" FromRole="Tbl_SlotModels" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="SlotName">
+          <Key>
+            <PropertyRef Name="SlotNameID" />
+          </Key>
+          <Property Name="SlotNameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.SlotName_GOTO_Slots" FromRole="Tbl_SlotName" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="Slots">
+          <Key>
+            <PropertyRef Name="SlotID" />
+          </Key>
+          <Property Name="SlotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VenueID" Type="Int32" Nullable="false" />
+          <Property Name="SlotTypeID" Type="Int32" Nullable="false" />
+          <Property Name="SlotStatusID" Type="Int32" Nullable="false" />
+          <Property Name="SlotModelID" Type="Int32" Nullable="false" />
+          <Property Name="SlotNameID" Type="Int32" Nullable="false" />
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="ManufacturerModelID" Type="Int32" Nullable="false" />
+          <Property Name="IsOriginal" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="DeviceCommissioned" Type="DateTime" Precision="3" />
+          <Property Name="DeviceDecommissioned" Type="DateTime" Precision="3" />
+          <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="34" FixedLength="false" Unicode="true" />
+          <Property Name="AssetNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceLocation" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_ManufacturerModels" Relationship="SDCModel.ManufacturerModel_GOTO_Slots" FromRole="Tbl_Slots" ToRole="Tbl_ManufacturerModels" />
+          <NavigationProperty Name="Tbl_Manufacturers" Relationship="SDCModel.Manufacturers_GOTO_Slots" FromRole="Tbl_Slots" ToRole="Tbl_Manufacturers" />
+          <NavigationProperty Name="Tbl_OperatorVenues" Relationship="SDCModel.OperatorVenue_GOTO_Slots" FromRole="Tbl_Slots" ToRole="Tbl_OperatorVenues" />
+          <NavigationProperty Name="Tbl_SlotHarnesses" Relationship="SDCModel.Slots_GOTO_SlotHarnesses" FromRole="Tbl_Slots" ToRole="Tbl_SlotHarnesses" />
+          <NavigationProperty Name="Tbl_SlotImages" Relationship="SDCModel.Slots_GOTO_SlotImages" FromRole="Tbl_Slots" ToRole="Tbl_SlotImages" />
+          <NavigationProperty Name="Tbl_SlotModels" Relationship="SDCModel.SlotModels_GOTO_Slots" FromRole="Tbl_Slots" ToRole="Tbl_SlotModels" />
+          <NavigationProperty Name="Tbl_SlotName" Relationship="SDCModel.SlotName_GOTO_Slots" FromRole="Tbl_Slots" ToRole="Tbl_SlotName" />
+          <NavigationProperty Name="Tbl_Tracker" Relationship="SDCModel.Slots_GOTO_Tracker" FromRole="Tbl_Slots" ToRole="Tbl_Tracker" />
+          <NavigationProperty Name="Tbl_SlotStatus" Relationship="SDCModel.SlotStatus_GOTO_Slots" FromRole="Tbl_Slots" ToRole="Tbl_SlotStatus" />
+          <NavigationProperty Name="Tbl_SlotTypes" Relationship="SDCModel.SlotType_GOTO_Slots" FromRole="Tbl_Slots" ToRole="Tbl_SlotTypes" />
+          <NavigationProperty Name="Tbl_Configuration" Relationship="SDCModel.Slots_GOTO_Configuration" FromRole="Slots" ToRole="Tbl_Configuration" />
+        </EntityType>
+        <EntityType Name="SlotStatus">
+          <Key>
+            <PropertyRef Name="SlotStatusID" />
+          </Key>
+          <Property Name="SlotStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.SlotStatus_GOTO_Slots" FromRole="Tbl_SlotStatus" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="SlotTypes">
+          <Key>
+            <PropertyRef Name="SlotTypeID" />
+          </Key>
+          <Property Name="SlotTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.SlotType_GOTO_Slots" FromRole="Tbl_SlotTypes" ToRole="Tbl_Slots" />
+        </EntityType>
+        <EntityType Name="Titles">
+          <Key>
+            <PropertyRef Name="TitleID" />
+          </Key>
+          <Property Name="TitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Contacts" Relationship="SDCModel.Titles_To_Contacts_FK" FromRole="Tbl_Titles" ToRole="Tbl_Contacts" />
+        </EntityType>
+        <EntityType Name="Tracker">
+          <Key>
+            <PropertyRef Name="TrackerID" />
+          </Key>
+          <Property Name="TrackerID" Type="Int32" Nullable="false" />
+          <Property Name="SlotID" Type="Int32" Nullable="false" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="10" Scale="8" />
+          <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="10" Scale="8" />
+          <Property Name="DistanceInKilometers" Type="Double" />
+          <Property Name="Scale" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.Slots_GOTO_Tracker" FromRole="Tbl_Tracker" ToRole="Tbl_Slots" />
+        </EntityType>
+        <Association Name="FK_Tbl_SMIBoards_Tbl_SMIBAerial">
+          <End Type="SDCModel.BoardAerials" Role="Tbl_BoardAerials" Multiplicity="1" />
+          <End Type="SDCModel.Boards" Role="Tbl_Boards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardAerials">
+              <PropertyRef Name="SMIBAerialID" />
+            </Principal>
+            <Dependent Role="Tbl_Boards">
+              <PropertyRef Name="SMIBAerialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SMIBoards_Tbl_SMIBoardBatches">
+          <End Type="SDCModel.BoardBatches" Role="Tbl_BoardBatches" Multiplicity="1" />
+          <End Type="SDCModel.Boards" Role="Tbl_Boards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardBatches">
+              <PropertyRef Name="SMIBatchID" />
+            </Principal>
+            <Dependent Role="Tbl_Boards">
+              <PropertyRef Name="SMIBatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoardManufacturers_GOTO_SMIBCardBatches">
+          <End Type="SDCModel.BoardManufacturers" Role="Tbl_BoardManufacturers" Multiplicity="0..1" />
+          <End Type="SDCModel.BoardBatches" Role="Tbl_BoardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardManufacturers">
+              <PropertyRef Name="SMIB_CardManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardBatches">
+              <PropertyRef Name="SMIB_ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoardTypes_GOTO_SMIBoardBatches">
+          <End Type="SDCModel.BoardTypes" Role="Tbl_BoardTypes" Multiplicity="0..1" />
+          <End Type="SDCModel.BoardBatches" Role="Tbl_BoardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardTypes">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardBatches">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ImageTypes_GOTO_SMIBoardImages">
+          <End Type="SDCModel.ImageTypes" Role="Tbl_ImageTypes" Multiplicity="1" />
+          <End Type="SDCModel.BoardImages" Role="Tbl_BoardImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_ImageTypes">
+              <PropertyRef Name="ImageTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardImages">
+              <PropertyRef Name="ImageTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_SMIBoardImages">
+          <End Type="SDCModel.OperatorVenues" Role="Tbl_OperatorVenues" Multiplicity="1" />
+          <End Type="SDCModel.BoardImages" Role="Tbl_BoardImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardImages">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoards_GOTO_SMIBoardImages">
+          <End Type="SDCModel.Boards" Role="Tbl_Boards" Multiplicity="1" />
+          <End Type="SDCModel.BoardImages" Role="Tbl_BoardImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Boards">
+              <PropertyRef Name="SMIBID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardImages">
+              <PropertyRef Name="SMIBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SMIBoardType_GOTO_SMIBoardManufacturers">
+          <End Type="SDCModel.BoardTypes" Role="Tbl_BoardTypes" Multiplicity="1" />
+          <End Type="SDCModel.BoardManufacturers" Role="Tbl_BoardManufacturers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_BoardTypes">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_BoardManufacturers">
+              <PropertyRef Name="SMIBoardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Company_GOTO_Operators">
+          <End Type="SDCModel.Company" Role="Tbl_Company" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SDCModel.Operators" Role="Tbl_Operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Tbl_Operators">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country_To_Company_FK">
+          <End Type="SDCModel.Countries" Role="Tbl_Countries" Multiplicity="1" />
+          <End Type="SDCModel.Company" Role="Tbl_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Company">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country_To_Contact_FK">
+          <End Type="SDCModel.Countries" Role="Tbl_Countries" Multiplicity="1" />
+          <End Type="SDCModel.Contacts" Role="Tbl_Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Contacts">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_Contacts">
+          <End Type="SDCModel.OperatorVenues" Role="Tbl_OperatorVenues" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SDCModel.Contacts" Role="Tbl_Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_Contacts">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Titles_To_Contacts_FK">
+          <End Type="SDCModel.Titles" Role="Tbl_Titles" Multiplicity="1" />
+          <End Type="SDCModel.Contacts" Role="Tbl_Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Titles">
+              <PropertyRef Name="TitleID" />
+            </Principal>
+            <Dependent Role="Tbl_Contacts">
+              <PropertyRef Name="TitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Countries_GOTO_Operators">
+          <End Type="SDCModel.Countries" Role="Tbl_Countries" Multiplicity="1" />
+          <End Type="SDCModel.Operators" Role="Tbl_Operators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Operators">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Countries_GOTO_OperatorVenues">
+          <End Type="SDCModel.Countries" Role="Tbl_Countries" Multiplicity="1" />
+          <End Type="SDCModel.OperatorVenues" Role="Tbl_OperatorVenues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_OperatorVenues">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CourierService_GOTO_SMIBReturnReports">
+          <End Type="SDCModel.CourierService" Role="Tbl_CourierService" Multiplicity="1" />
+          <End Type="SDCModel.Returns" Role="Tbl_Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CourierService">
+              <PropertyRef Name="CourierID" />
+            </Principal>
+            <Dependent Role="Tbl_Returns">
+              <PropertyRef Name="CourierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotImages_GOTO_ImageTypes">
+          <End Type="SDCModel.ImageTypes" Role="Tbl_ImageTypes" Multiplicity="1" />
+          <End Type="SDCModel.SlotImages" Role="Tbl_SlotImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_ImageTypes">
+              <PropertyRef Name="ImageTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotImages">
+              <PropertyRef Name="ImageTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ManufacturerModel_GOTO_Slots">
+          <End Type="SDCModel.ManufacturerModels" Role="Tbl_ManufacturerModels" Multiplicity="1" />
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_ManufacturerModels">
+              <PropertyRef Name="ManufacturerModelID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="ManufacturerModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Manufacturers_GOTO_ManufacturerModels">
+          <End Type="SDCModel.Manufacturers" Role="Tbl_Manufacturers" Multiplicity="1" />
+          <End Type="SDCModel.ManufacturerModels" Role="Tbl_ManufacturerModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_ManufacturerModels">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Manufacturers_GOTO_Slots">
+          <End Type="SDCModel.Manufacturers" Role="Tbl_Manufacturers" Multiplicity="1" />
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Operators_GOTO_OperatorVenues">
+          <End Type="SDCModel.Operators" Role="Tbl_Operators" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SDCModel.OperatorVenues" Role="Tbl_OperatorVenues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Operators">
+              <PropertyRef Name="OperatorID" />
+            </Principal>
+            <Dependent Role="Tbl_OperatorVenues">
+              <PropertyRef Name="OperatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorTypes_GOTO_Operators">
+          <End Type="SDCModel.OperatorTypes" Role="Tbl_OperatorTypes" Multiplicity="1" />
+          <End Type="SDCModel.OperatorVenues" Role="Tbl_OperatorVenues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorTypes">
+              <PropertyRef Name="OperatorTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_OperatorVenues">
+              <PropertyRef Name="OperatorTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_SlotImages">
+          <End Type="SDCModel.OperatorVenues" Role="Tbl_OperatorVenues" Multiplicity="1" />
+          <End Type="SDCModel.SlotImages" Role="Tbl_SlotImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotImages">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OperatorVenue_GOTO_Slots">
+          <End Type="SDCModel.OperatorVenues" Role="Tbl_OperatorVenues" Multiplicity="1" />
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OperatorVenues">
+              <PropertyRef Name="VenueID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="VenueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Reports_GOTO_Returns">
+          <End Type="SDCModel.Reports" Role="Tbl_Reports" Multiplicity="1" />
+          <End Type="SDCModel.Returns" Role="Tbl_Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Reports">
+              <PropertyRef Name="ReportID" />
+            </Principal>
+            <Dependent Role="Tbl_Returns">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SimCardBatches_Tbl_SimCardManufacturers">
+          <End Type="SDCModel.SimCardManufacturers" Role="Tbl_SimCardManufacturers" Multiplicity="1" />
+          <End Type="SDCModel.SimCardBatches" Role="Tbl_SimCardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SimCardManufacturers">
+              <PropertyRef Name="SIM_CardManufacturerID" />
+            </Principal>
+            <Dependent Role="Tbl_SimCardBatches">
+              <PropertyRef Name="SIM_ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SimCardBatches_Tbl_SimCardTypes">
+          <End Type="SDCModel.SimCardTypes" Role="Tbl_SimCardTypes" Multiplicity="1" />
+          <End Type="SDCModel.SimCardBatches" Role="Tbl_SimCardBatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SimCardTypes">
+              <PropertyRef Name="SIM_CardTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_SimCardBatches">
+              <PropertyRef Name="SIM_CardTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SimCards_Tbl_SimCardBatches">
+          <End Type="SDCModel.SimCardBatches" Role="Tbl_SimCardBatches" Multiplicity="1" />
+          <End Type="SDCModel.SimCards" Role="Tbl_SimCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SimCardBatches">
+              <PropertyRef Name="SimBatchID" />
+            </Principal>
+            <Dependent Role="Tbl_SimCards">
+              <PropertyRef Name="SIMBatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_SlotHarnesses">
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SDCModel.SlotHarnesses" Role="Tbl_SlotHarnesses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotHarnesses">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_SlotImages">
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SDCModel.SlotImages" Role="Tbl_SlotImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_SlotImages">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotModels_GOTO_Slots">
+          <End Type="SDCModel.SlotModels" Role="Tbl_SlotModels" Multiplicity="1" />
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotModels">
+              <PropertyRef Name="SlotModelID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotName_GOTO_Slots">
+          <End Type="SDCModel.SlotName" Role="Tbl_SlotName" Multiplicity="1" />
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotName">
+              <PropertyRef Name="SlotNameID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotNameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_Tracker">
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="1" />
+          <End Type="SDCModel.Tracker" Role="Tbl_Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_Tracker">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotStatus_GOTO_Slots">
+          <End Type="SDCModel.SlotStatus" Role="Tbl_SlotStatus" Multiplicity="1" />
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotStatus">
+              <PropertyRef Name="SlotStatusID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SlotType_GOTO_Slots">
+          <End Type="SDCModel.SlotTypes" Role="Tbl_SlotTypes" Multiplicity="1" />
+          <End Type="SDCModel.Slots" Role="Tbl_Slots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SlotTypes">
+              <PropertyRef Name="SlotTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Slots">
+              <PropertyRef Name="SlotTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="ConfigurationID" />
+          </Key>
+          <Property Name="ConfigurationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIMCardID" Type="Int32" Nullable="false" />
+          <Property Name="SIM_ActivatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SIM_DeactivatedOn" Type="DateTime" Precision="3" />
+          <Property Name="SIMCardNowAssigned" Type="Boolean" Nullable="false" />
+          <Property Name="SMIBID" Type="Int32" Nullable="false" />
+          <Property Name="SMIB_ActivatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SMIB_DeactivatedOn" Type="DateTime" Precision="3" />
+          <Property Name="SMIBoardNowAssigned" Type="Boolean" Nullable="false" />
+          <Property Name="SlotID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Boards" Relationship="SDCModel.FK_Tbl_Configuration_Tbl_SMIBoards" FromRole="Tbl_Configuration" ToRole="Boards" />
+          <NavigationProperty Name="Tbl_SimCards" Relationship="SDCModel.FK_Tbl_Configuration_Tbl_SimCards" FromRole="Tbl_Configuration" ToRole="SimCards" />
+          <NavigationProperty Name="Tbl_Slots" Relationship="SDCModel.Slots_GOTO_Configuration" FromRole="Tbl_Configuration" ToRole="Slots" />
+        </EntityType>
+        <Association Name="FK_Tbl_Configuration_Tbl_SMIBoards">
+          <End Type="SDCModel.Boards" Role="Boards" Multiplicity="1" />
+          <End Type="SDCModel.Configuration" Role="Tbl_Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boards">
+              <PropertyRef Name="SMIBID" />
+            </Principal>
+            <Dependent Role="Tbl_Configuration">
+              <PropertyRef Name="SMIBID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Configuration_Tbl_SimCards">
+          <End Type="SDCModel.SimCards" Role="SimCards" Multiplicity="1" />
+          <End Type="SDCModel.Configuration" Role="Tbl_Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SimCards">
+              <PropertyRef Name="SIMCardID" />
+            </Principal>
+            <Dependent Role="Tbl_Configuration">
+              <PropertyRef Name="SIMCardID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Slots_GOTO_Configuration">
+          <End Type="SDCModel.Slots" Role="Slots" Multiplicity="1" />
+          <End Type="SDCModel.Configuration" Role="Tbl_Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slots">
+              <PropertyRef Name="SlotID" />
+            </Principal>
+            <Dependent Role="Tbl_Configuration">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SDCModelStoreContainer" CdmEntityContainer="SDCEntities">
+          <EntitySetMapping Name="BoardAerials">
+            <EntityTypeMapping TypeName="SDCModel.BoardAerials">
+              <MappingFragment StoreEntitySet="Tbl_BoardAerials">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SMIBAerialID" ColumnName="SMIBAerialID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoardBatches">
+            <EntityTypeMapping TypeName="SDCModel.BoardBatches">
+              <MappingFragment StoreEntitySet="Tbl_BoardBatches">
+                <ScalarProperty Name="BoardLocation" ColumnName="BoardLocation" />
+                <ScalarProperty Name="UnitsReceived" ColumnName="UnitsReceived" />
+                <ScalarProperty Name="BatchNumber" ColumnName="BatchNumber" />
+                <ScalarProperty Name="ReceivedOn" ColumnName="ReceivedOn" />
+                <ScalarProperty Name="SMIBoardTypeID" ColumnName="SMIBoardTypeID" />
+                <ScalarProperty Name="SMIB_ManufacturerID" ColumnName="SMIB_ManufacturerID" />
+                <ScalarProperty Name="SMIBatchID" ColumnName="SMIBatchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoardImages">
+            <EntityTypeMapping TypeName="SDCModel.BoardImages">
+              <MappingFragment StoreEntitySet="Tbl_BoardImages">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="ImageTypeID" ColumnName="ImageTypeID" />
+                <ScalarProperty Name="SMIBID" ColumnName="SMIBID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoardManufacturers">
+            <EntityTypeMapping TypeName="SDCModel.BoardManufacturers">
+              <MappingFragment StoreEntitySet="Tbl_BoardManufacturers">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SMIBoardTypeID" ColumnName="SMIBoardTypeID" />
+                <ScalarProperty Name="SMIB_CardManufacturerID" ColumnName="SMIB_CardManufacturerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Boards">
+            <EntityTypeMapping TypeName="SDCModel.Boards">
+              <MappingFragment StoreEntitySet="Tbl_Boards">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="SMIBAerialID" ColumnName="SMIBAerialID" />
+                <ScalarProperty Name="SMIBatchID" ColumnName="SMIBatchID" />
+                <ScalarProperty Name="SMIBID" ColumnName="SMIBID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoardTypes">
+            <EntityTypeMapping TypeName="SDCModel.BoardTypes">
+              <MappingFragment StoreEntitySet="Tbl_BoardTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SMIBoardTypeID" ColumnName="SMIBoardTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="SDCModel.Company">
+              <MappingFragment StoreEntitySet="Tbl_Company">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="AddressTwo" ColumnName="AddressTwo" />
+                <ScalarProperty Name="AddressOne" ColumnName="AddressOne" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="SDCModel.Contacts">
+              <MappingFragment StoreEntitySet="Tbl_Contacts">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="SDCModel.Countries">
+              <MappingFragment StoreEntitySet="Tbl_Countries">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourierServices">
+            <EntityTypeMapping TypeName="SDCModel.CourierService">
+              <MappingFragment StoreEntitySet="Tbl_CourierService">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CourierID" ColumnName="CourierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageTypes">
+            <EntityTypeMapping TypeName="SDCModel.ImageTypes">
+              <MappingFragment StoreEntitySet="Tbl_ImageTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImageTypeID" ColumnName="ImageTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManufacturerModels">
+            <EntityTypeMapping TypeName="SDCModel.ManufacturerModels">
+              <MappingFragment StoreEntitySet="Tbl_ManufacturerModels">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="ManufacturerModelID" ColumnName="ManufacturerModelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="SDCModel.Manufacturers">
+              <MappingFragment StoreEntitySet="Tbl_Manufacturers">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ManufacturedDate" ColumnName="ManufacturedDate" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operators">
+            <EntityTypeMapping TypeName="SDCModel.Operators">
+              <MappingFragment StoreEntitySet="Tbl_Operators">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="AddressTwo" ColumnName="AddressTwo" />
+                <ScalarProperty Name="AddressOne" ColumnName="AddressOne" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatorTypes">
+            <EntityTypeMapping TypeName="SDCModel.OperatorTypes">
+              <MappingFragment StoreEntitySet="Tbl_OperatorTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OperatorTypeID" ColumnName="OperatorTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatorVenues">
+            <EntityTypeMapping TypeName="SDCModel.OperatorVenues">
+              <MappingFragment StoreEntitySet="Tbl_OperatorVenues">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="AddressTwo" ColumnName="AddressTwo" />
+                <ScalarProperty Name="AddressOne" ColumnName="AddressOne" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Permit" ColumnName="Permit" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OperatorTypeID" ColumnName="OperatorTypeID" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="SDCModel.Reports">
+              <MappingFragment StoreEntitySet="Tbl_Reports">
+                <ScalarProperty Name="DeviceSerialNumber" ColumnName="DeviceSerialNumber" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Returns">
+            <EntityTypeMapping TypeName="SDCModel.Returns">
+              <MappingFragment StoreEntitySet="Tbl_Returns">
+                <ScalarProperty Name="Dispatched" ColumnName="Dispatched" />
+                <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+                <ScalarProperty Name="ReturnedBy" ColumnName="ReturnedBy" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="CourierID" ColumnName="CourierID" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="ReturnID" ColumnName="ReturnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimCardBatches">
+            <EntityTypeMapping TypeName="SDCModel.SimCardBatches">
+              <MappingFragment StoreEntitySet="Tbl_SimCardBatches">
+                <ScalarProperty Name="CardLocation" ColumnName="CardLocation" />
+                <ScalarProperty Name="UnitsReceived" ColumnName="UnitsReceived" />
+                <ScalarProperty Name="BatchReference" ColumnName="BatchReference" />
+                <ScalarProperty Name="ReceivedOn" ColumnName="ReceivedOn" />
+                <ScalarProperty Name="SIM_CardTypeID" ColumnName="SIM_CardTypeID" />
+                <ScalarProperty Name="SIM_ManufacturerID" ColumnName="SIM_ManufacturerID" />
+                <ScalarProperty Name="SimBatchID" ColumnName="SimBatchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimCardManufacturers">
+            <EntityTypeMapping TypeName="SDCModel.SimCardManufacturers">
+              <MappingFragment StoreEntitySet="Tbl_SimCardManufacturers">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SIM_CardManufacturerID" ColumnName="SIM_CardManufacturerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimCards">
+            <EntityTypeMapping TypeName="SDCModel.SimCards">
+              <MappingFragment StoreEntitySet="Tbl_SimCards">
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ActivatedOn" ColumnName="ActivatedOn" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="SIMBatchID" ColumnName="SIMBatchID" />
+                <ScalarProperty Name="SIMCardID" ColumnName="SIMCardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimCardTypes">
+            <EntityTypeMapping TypeName="SDCModel.SimCardTypes">
+              <MappingFragment StoreEntitySet="Tbl_SimCardTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SIM_CardTypeID" ColumnName="SIM_CardTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlotHarnesses">
+            <EntityTypeMapping TypeName="SDCModel.SlotHarnesses">
+              <MappingFragment StoreEntitySet="Tbl_SlotHarnesses">
+                <ScalarProperty Name="DS_PowerConnect_PinOut" ColumnName="DS_PowerConnect_PinOut" />
+                <ScalarProperty Name="DS_DataConnect_PinOut" ColumnName="DS_DataConnect_PinOut" />
+                <ScalarProperty Name="DS_DataConnectType" ColumnName="DS_DataConnectType" />
+                <ScalarProperty Name="DS_PowerConnect" ColumnName="DS_PowerConnect" />
+                <ScalarProperty Name="DS_DataConnect" ColumnName="DS_DataConnect" />
+                <ScalarProperty Name="BS_PowerConnect_PinOut" ColumnName="BS_PowerConnect_PinOut" />
+                <ScalarProperty Name="BS_DataConnect_PinOut" ColumnName="BS_DataConnect_PinOut" />
+                <ScalarProperty Name="BS_DataConnectType" ColumnName="BS_DataConnectType" />
+                <ScalarProperty Name="BS_PowerConnect" ColumnName="BS_PowerConnect" />
+                <ScalarProperty Name="BS_DataConnect" ColumnName="BS_DataConnect" />
+                <ScalarProperty Name="COM_Power_Jumper_Number" ColumnName="COM_Power_Jumper_Number" />
+                <ScalarProperty Name="COM_Jumper_Number" ColumnName="COM_Jumper_Number" />
+                <ScalarProperty Name="COM_Jumper_Type" ColumnName="COM_Jumper_Type" />
+                <ScalarProperty Name="CableLength" ColumnName="CableLength" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="SlotHarnessID" ColumnName="SlotHarnessID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlotImages">
+            <EntityTypeMapping TypeName="SDCModel.SlotImages">
+              <MappingFragment StoreEntitySet="Tbl_SlotImages">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="ImageTypeID" ColumnName="ImageTypeID" />
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlotModels">
+            <EntityTypeMapping TypeName="SDCModel.SlotModels">
+              <MappingFragment StoreEntitySet="Tbl_SlotModels">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SlotModelID" ColumnName="SlotModelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlotNames">
+            <EntityTypeMapping TypeName="SDCModel.SlotName">
+              <MappingFragment StoreEntitySet="Tbl_SlotName">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SlotNameID" ColumnName="SlotNameID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slots">
+            <EntityTypeMapping TypeName="SDCModel.Slots">
+              <MappingFragment StoreEntitySet="Tbl_Slots">
+                <ScalarProperty Name="DeviceLocation" ColumnName="DeviceLocation" />
+                <ScalarProperty Name="AssetNumber" ColumnName="AssetNumber" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="DeviceDecommissioned" ColumnName="DeviceDecommissioned" />
+                <ScalarProperty Name="DeviceCommissioned" ColumnName="DeviceCommissioned" />
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOriginal" ColumnName="IsOriginal" />
+                <ScalarProperty Name="ManufacturerModelID" ColumnName="ManufacturerModelID" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="SlotNameID" ColumnName="SlotNameID" />
+                <ScalarProperty Name="SlotModelID" ColumnName="SlotModelID" />
+                <ScalarProperty Name="SlotStatusID" ColumnName="SlotStatusID" />
+                <ScalarProperty Name="SlotTypeID" ColumnName="SlotTypeID" />
+                <ScalarProperty Name="VenueID" ColumnName="VenueID" />
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlotStatus">
+            <EntityTypeMapping TypeName="SDCModel.SlotStatus">
+              <MappingFragment StoreEntitySet="Tbl_SlotStatus">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SlotStatusID" ColumnName="SlotStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlotTypes">
+            <EntityTypeMapping TypeName="SDCModel.SlotTypes">
+              <MappingFragment StoreEntitySet="Tbl_SlotTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SlotTypeID" ColumnName="SlotTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Titles">
+            <EntityTypeMapping TypeName="SDCModel.Titles">
+              <MappingFragment StoreEntitySet="Tbl_Titles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trackers">
+            <EntityTypeMapping TypeName="SDCModel.Tracker">
+              <MappingFragment StoreEntitySet="Tbl_Tracker">
+                <ScalarProperty Name="Scale" ColumnName="Scale" />
+                <ScalarProperty Name="DistanceInKilometers" ColumnName="DistanceInKilometers" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="TrackerID" ColumnName="TrackerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configurations">
+            <EntityTypeMapping TypeName="SDCModel.Configuration">
+              <MappingFragment StoreEntitySet="Tbl_Configuration">
+                <ScalarProperty Name="SlotID" ColumnName="SlotID" />
+                <ScalarProperty Name="SMIBoardNowAssigned" ColumnName="SMIBoardNowAssigned" />
+                <ScalarProperty Name="SMIB_DeactivatedOn" ColumnName="SMIB_DeactivatedOn" />
+                <ScalarProperty Name="SMIB_ActivatedOn" ColumnName="SMIB_ActivatedOn" />
+                <ScalarProperty Name="SMIBID" ColumnName="SMIBID" />
+                <ScalarProperty Name="SIMCardNowAssigned" ColumnName="SIMCardNowAssigned" />
+                <ScalarProperty Name="SIM_DeactivatedOn" ColumnName="SIM_DeactivatedOn" />
+                <ScalarProperty Name="SIM_ActivatedOn" ColumnName="SIM_ActivatedOn" />
+                <ScalarProperty Name="SIMCardID" ColumnName="SIMCardID" />
+                <ScalarProperty Name="ConfigurationID" ColumnName="ConfigurationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

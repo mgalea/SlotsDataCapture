@@ -1,0 +1,64 @@
+﻿@model SlotsDataCapture.ENTITIES.BoardAerials
+@{ViewBag.Title = "Delete";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-delete">Delete</span>Record</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="form-location">Delete<span class="form-location-bold">Board Aerial @Html.DisplayFor(model => model.Name)</span></p>
+                <div class="row  form-row-form-content">
+                    <div class="col-md-12 offset-md-1">
+                        <div class="form-row mt-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-gear" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_aerialtype" class="lbl-01">Aerial type:</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row  form-row-form-controls">
+                    <div class="col-sm-6">
+                        <span>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                            }
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Back To Admin", "Index", "BoardAerials", null, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

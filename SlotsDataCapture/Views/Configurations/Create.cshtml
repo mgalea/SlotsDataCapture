@@ -1,0 +1,231 @@
+﻿@model SlotsDataCapture.ENTITIES.Configuration
+@{ViewBag.Title = "Create";}
+@{
+    ViewBag.Title = "create new entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-top-container">
+            <div class="card form-rounder">
+                <div class="card-header">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-create">Add</span>Record</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="form-location">Create<span class="form-location-bold">Slot Machine Configuration</span></p>
+                    <div class="row  form-row-form-content">
+                        <div class="col-md-12 offset-md-1">
+                            <div class="form-row mt-8">
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:blue">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_simcardactivationdate" class="lbl-01">Sim card activated on:</label>
+                                    @Html.EditorFor(model => model.SIM_ActivatedOn, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                    @Html.ValidationMessageFor(model => model.SIM_ActivatedOn, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:red">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_simdecativatedon" class="lbl-01">Sim card deactivated on:</label>
+                                    @Html.EditorFor(model => model.SIM_DeactivatedOn, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                    @Html.ValidationMessageFor(model => model.SIM_DeactivatedOn, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:blue">
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_simcard" class="lbl-01">Sim card serial number:</label>
+                                    <p class="form-db-record-count">Total Available Cards = @ViewBag.SimCardRecordCount</p>
+                                    @Html.HiddenFor(model => model.SIMCardID)
+                                    @Html.EditorFor(model => model.Tbl_SimCards.SerialNumber, new { htmlAttributes = new { @class = "form-control field-validation", id = "CardSerial" } })
+                                </div>
+                                <div class="col-sm-12 pb-3"><br /></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:green">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <i class="fas fa-microchip"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_boardactivation" class="lbl-01">Board activated on:</label>
+                                    @Html.EditorFor(model => model.SMIB_ActivatedOn, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                    @Html.ValidationMessageFor(model => model.SMIB_ActivatedOn, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:red">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <i class="fas fa-microchip"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_boarddeactvation" class="lbl-01">Board deactivated on:</label>
+                                    @Html.EditorFor(model => model.SMIB_DeactivatedOn, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                    @Html.ValidationMessageFor(model => model.SMIB_DeactivatedOn, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:green">
+                                            <i class="fas fa-microchip"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_boardlist" class="lbl-01">Board serial number:</label>
+                                    <p class="form-db-record-count">Total Available Boards = @ViewBag.SMIBoardRecordCount</p>
+                                    @Html.HiddenFor(model => model.SMIBID)
+                                    @Html.EditorFor(model => model.Tbl_Boards.SerialNumber, new { htmlAttributes = new { @class = "form-control field-validation", id = "BoardSerial" } })
+                                </div>
+                                <div class="col-sm-12 pb-3"><br /></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:orange">
+                                            <i class="fa fa-warning" aria-hidden="true"></i>
+                                            <i class="fas fa-cogs"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_slotmachinelist" class="lbl-01">Assign confi to machine ref:</label>
+                                    <p class="form-db-record-count">Total Available Slots = @ViewBag.DeviceRecordCount</p>
+                                    @Html.HiddenFor(model => model.SlotID)
+                                    @Html.EditorFor(model => model.Tbl_Slots.SerialNumber, new { htmlAttributes = new { @class = "form-control field-validation", id = "SlotMachineSerial" } })
+
+                                </div>
+                                <div class="col-sm-12 pb-3"><br /></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:red">
+                                            <i class="fas fa-check"></i>
+                                            <i class="fas fa-microchip"></i>
+                                        </span>
+                                    </span>
+                                    <span class="lbl-01">Confirm board:</span>
+                                    @Html.EditorFor(model => model.SMIBoardNowAssigned, new { @class = "custom-control-input" })
+                                    @Html.ValidationMessageFor(model => model.SMIBoardNowAssigned, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <span style="color:red">
+                                            <i class="fas fa-check"></i>
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                    </span>
+                                    <span class="lbl-01">Confirm card:</span>
+                                    @Html.EditorFor(model => model.SIMCardNowAssigned, new { @class = "custom-control-input" })
+                                    @Html.ValidationMessageFor(model => model.SIMCardNowAssigned, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row-form-controls">
+                    <div class="col-sm-6">
+                        <input type="submit" value="Create" class="btn btn-outline-info " />
+                    </div>
+                    <div class="col-sm-6">@Html.ActionLink("Back To Listings", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })</div>
+                </div>
+                <div class="card-header border-0">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <div>
+                                @Html.Partial("footer")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#CardSerial').autocomplete({
+            source: '/Configurations/FindCard',
+            select: function (event, ui) {
+                $('#SIMCardID').val(ui.item.id);
+                this.value = ui.item.value;
+
+                //  alert(ui.item.id);
+                {
+                    value = this.value = ui.item.name + ui.item.value
+                    return value;
+                }
+
+            }
+
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#BoardSerial').autocomplete({
+            source: '/Configurations/FindBoard',
+            select: function (event, ui) {
+                $('#SMIBID').val(ui.item.id);
+
+                //  alert(ui.item.id);
+                this.value = ui.item.value;
+
+                {
+                    value = this.value = ui.item.name + ui.item.value
+                    return value;
+                }
+            }
+
+        });
+    });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#SlotMachineSerial').autocomplete({
+            source: '/Configurations/FindSlotMachine',
+            select: function (event, ui) {
+                $('#SlotID').val(ui.item.id);
+
+                // alert(ui.item.id);
+
+                this.value = ui.item.value;
+                {
+                    value = this.value = ui.item.name + ui.item.value
+                    return value;
+                }
+            }
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

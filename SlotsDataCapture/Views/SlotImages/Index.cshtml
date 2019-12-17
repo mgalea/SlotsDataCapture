@@ -1,0 +1,128 @@
+﻿@model IEnumerable<SlotsDataCapture.ENTITIES.SlotImages>
+@{ViewBag.Title = "Index";}
+
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-list">Slot Machine Image</span>Listing</h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            @*BEGIN FORM*@
+            @using (@Html.BeginForm("Index", "SlotImages", FormMethod.Get))
+            {
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span>
+                                    <i class="fa fa-plus"></i>
+                                    @Html.ActionLink("Create New", "Add", "SlotImages", new { @class = "btn btn-outline-info btn-lg" })
+                                </span>
+                            </div>
+                          
+                        </div>
+                    </div> @*Close Card Body*@
+               
+            }
+        </div> @*Close Main Card*@
+        <table class="table table-hover">
+         <thead>
+               <tr class="bg-dark text-white">
+                   
+                    <th class="form-th-item">Slot Serial</th>
+                    <th class="form-th-item">Img-Type</th>
+                    <th class="form-th-item">Establishment</th>
+                    <th class="form-th-item">
+                        <span style="color:lightgreen">
+                            <i class="fa fa-clipboard"></i>
+                        </span>Operators
+                    </th>
+                    <th class="form-th-item"><i class="fa fa-cog"></i> Details</th>
+                    <th class="form-th-item"><i class="fa fa-cog"></i> Edit</th>
+                    <th class="form-th-item"><i class="fa fa-cog"></i> Delete</th>
+
+                </tr>
+              
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                <tr class="form-tr-item">
+                   
+                    <td>@Html.DisplayFor(modelItem => item.Tbl_Slots.SerialNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Tbl_ImageTypes.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Tbl_OperatorVenues.Name)</td>
+                    <td><img src="@Url.Content(item.ImagePath)" width="250" height="125" multiple /></td>
+                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.ImageID }, new { @class = "btn btn-outline-danger btn-sm" }) </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+        <div class="card-header border-0">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <div>
+                        @Html.Partial("footer")
+                    </div>
+                </div>
+            </div> @*Card Header Title Content*@
+        </div>
+    </div>@*Close Parent Container*@
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

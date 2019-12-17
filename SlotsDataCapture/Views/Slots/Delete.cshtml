@@ -1,0 +1,91 @@
+﻿@model SlotsDataCapture.ENTITIES.Slots
+@{ViewBag.Title = "Delete";}
+
+    <div class="container-fluid">
+        <div class="form-top-container">
+            <div class="card border-0">
+                <div class="card-header border-0">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-delete">Delete</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.SerialNumber)</span></h5>
+                        </div>
+                    </div> @*Card Header Title Content*@
+                </div> @*Card Header End*@
+
+                <div class="row  form-row-shade-active">
+                    <div class="col-sm-6">
+                        <span class="form-style-delete">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <label for="lbl_decommisionedon" class="form-lb-red">Decommissioned On:</label>
+                        </span>
+                        <p class="lbl-01">@Html.DisplayFor(model => model.DeviceDecommissioned)</p>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <span class="form-style-delete">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            < <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <label for="lbl_commisionedonn" class="form-lb-red">Activated On:</label>
+                        </span>
+                        <p class="lbl-01">@Html.DisplayFor(model => model.DeviceCommissioned)</p>
+                    </div>
+                </div>
+                <div class="row  form-row-shade-active">
+                    <div class="col-sm-6">
+                        <span class="form-style-delete">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <label for="lbl_establishment" class="form-lb-red">Establishment Name:</label>
+                        </span>
+                        <p class="lbl-01">@Html.DisplayFor(model => model.Tbl_OperatorVenues.Name)</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-delete">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <label for="lbl_location" class="form-lb-red">Establishment Location:</label>
+                        </span>
+                        <p class="lbl-01">@Html.DisplayFor(model => model.Tbl_OperatorVenues.Town)</p>
+                    </div>
+                </div>
+
+                <div class="row  form-row-shade-active">
+                    <div class="col-sm-6">
+                        <span class="form-style-delete">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <label for="lbl_serialnumber" class="form-lb-red">Slot Serial N0:</label>
+                        </span>
+                        <p class="lbl-01">@Html.DisplayFor(model => model.SerialNumber)</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-delete">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <label for="lbl_assetnumber" class="form-lb-red">Slot Assest N0:</label>
+                        </span>
+                        <p class="lbl-01">@Html.DisplayFor(model => model.AssetNumber)</p>
+                    </div>
+                </div>
+              <div class="row  form-row-shade-active">
+                    <div class="col-sm-6">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                        }
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.ActionLink("Back To Listings", "Index", new { id = Model.SlotID }, new { @class = "btn btn-outline-primary" })
+                    </div>
+                </div>
+            </div> @*Close Main Card*@
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div>
+        </div>@*Close Parent Container*@
+    </div>

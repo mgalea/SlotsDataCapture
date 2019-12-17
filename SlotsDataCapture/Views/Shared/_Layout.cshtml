@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("css", required: false)
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Slot Data Capture</title>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-all.css" rel="stylesheet" />
+    <link href="~/Content/side-navigation.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+    @*@RenderSection("scripts", required: false)*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+</head>
+
+<body>
+    <!-- Bootstrap NavBar -->
+    <nav class="navbar navbar-expand-md bg-dark">
+        <div class="d-flex w-25 order-0">
+            <div class="top-menu-image-position">
+                <img class="d-inline-block align-top" alt="Slot Machine Data Capture Application" src="~/Images/Icons/nav-bar-icon.png" />
+                <div class="top-menu-caption">SLOT DATA CAPTURE</div>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+  
+
+
+
+    <!-- Bootstrap row -->
+    <div class="row" id="body-row">
+        <!-- Sidebar -->
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+            <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+            <!-- Bootstrap List Group -->
+            <ul class="list-group">
+                <!-- Separator with title -->
+                @*<li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+            <small class="text-white">MAIN MENU</small>
+        </li>*@
+                <!-- /END Separator -->
+                <!-- Menu with submenu -->
+
+                <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+
+                </li>
+                <!-- /END Separator -->
+                @*<a href="#" class="bg-dark list-group-item list-group-item-action">
+            <span class="d-flex w-100 justify-content-start align-items-center">
+                <span>
+                    <span class="fa fa-tasks fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Companies</span>
+                </span>
+            </span>
+        </a>*@
+                <span class="list-group-item list-group-item-action bg-dark">
+                    <span class="nav-align-actionlink">
+                        <span>
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("COMPANY", "Index", "Companies")
+                        </span>
+                    </span>
+                </span>
+
+
+
+
+
+                <!-- BEGIN BOARDS MENU -->
+                <a href="#boardMenu" data-toggle="collapse" aria-expanded="false" 
+                   class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <span class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-microchip fa-fw mr-4"></span>
+                            <span class="menu-collapsed">SMI-Boards</span>
+                        </span>
+                    </span>
+                </a>
+                <!-- Begin Board Submenu -->
+                <span id='boardMenu' class="collapse sidebar-submenu">
+                    <span class="list-group-item list-group-item-action bg-dark">
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-microchip text-white"></i>
+                            @Html.ActionLink("All Active Boards", "ActiveBoards", "Boards")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-microchip text-white"></i>
+                            @Html.ActionLink("All Inactive Boards", "InactiveBoards", "Boards")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-microchip text-white"></i>
+                            @Html.ActionLink("Board Aerials", "Index", "BoardAerials")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-microchip text-white"></i>
+                            @Html.ActionLink("Board Batches", "Index", "BoardBatches")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-microchip text-white"></i>
+                            @Html.ActionLink("Boards", "Index", "Boards")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-microchip text-white"></i>
+                            @Html.ActionLink("Board Images", "Index", "BoardImages")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-microchip text-white"></i>
+                            @Html.ActionLink("Manufacturers", "Index", "BoardManufacturers")
+                        </span>
+                    </span>
+                </span>
+                   <!-- END BOARDS MENU -->
+                <!-- BEGIN CARD MENU -->
+                <a href="#simcardMenu" data-toggle="collapse" aria-expanded="false"
+                   class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <span class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-sim-card fa-fw mr-4"></span>
+                            <span class="menu-collapsed">Sim Cards</span>
+                        </span>
+                    </span>
+                </a>
+                  <span id='simcardMenu' class="collapse sidebar-submenu">
+                    <span class="list-group-item list-group-item-action bg-dark">
+
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("All Active Cards", "ActiveSimcards", "SimCards")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("All Inactive Cards", "InactiveSimCards", "SimCards")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Card Batches", "Index", "SimCardBatches")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Cards", "Index", "SimCards")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Card Manufacturers", "Index", "SimCardManufacturers")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Card Types", "Index", "SimCardTypes")
+                        </span>
+                    </span>
+                </span>
+                <!-- END CARD MENU -->
+                <!-- BEGIN SLOT MACHINE MENU -->
+                <a href="#submenu3" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <span class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Slot Machines</span>
+                    </span>
+                </a>
+              
+                <span id='submenu3' class="collapse sidebar-submenu">
+                    <span class="list-group-item list-group-item-action bg-dark">
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Slot Harnesses ", "HarnessListing", "SlotHarnesses")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Slot Models ", "Index", "SlotModels")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Slot Manufacturers", "Index", "Manufacturers")
+                        </span>
+
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Slot Manufacturer Model", "Index", "ManufacturerModels")
+                        </span>
+
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Slot Names ", "Index", "SlotNames")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Slots ", "Index", "Slots")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Slot Types ", "Index", "SlotTypes")
+                        </span>
+                    </span>
+                </span>
+                <!-- END SLOT MACHINE MENU -->
+                <!-- BEGIN LIST CONTROLS MENU -->
+                <a href="#submenu4" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <span class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-tasks fa-fw mr-3"></span>
+                            <span class="menu-collapsed">Dropdown List Controls</span>
+                        </span>
+                    </span>
+                </a>
+              
+                <span id='submenu4' class="collapse sidebar-submenu">
+                    <span class="list-group-item list-group-item-action bg-dark">
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Countries", "Index", "Country")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Courier Service", "Index", "CourierServices")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Image Category Type", "Index", "ImageTypes")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Operator Types", "Index", "OperatorTypes")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-link text-white"></i>
+                            @Html.ActionLink("Reports", "Index", "Reports")
+                        </span>
+                    </span>
+                </span>
+
+
+
+
+
+
+
+                <a href="#submenu5" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <span class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-tasks fa-fw mr-3"></span>
+                            <span class="menu-collapsed">Data Lists</span>
+                        </span>
+                    </span>
+                </a>
+             
+                <span id='submenu5' class="collapse sidebar-submenu">
+                    <span class="list-group-item list-group-item-action bg-dark">
+                      
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Company Listings", "CompanyListing", "Companies")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Contact Listings", "ContactListing", "Contacts")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Manufacturer Listings", "ManufacturerListing", "Manufacturers")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Manufacturer Model Listing", "ModelListing", "ManufacturerModels")
+                        </span>
+
+
+
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Manufacturer Model Listing", "ModelListing", "ManufacturerModels")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Operator Listing", "OperatorListing", "Operators")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Establishment Listing", "VenueListing", "OperatorVenues")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Report Listing", "ReportListing", "Reports")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Item Returns", "ReturnsListing", "Returns")
+                        </span>
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Machine Configuration Listing", "ConfigurationListing", "Configurations")
+                        </span>
+
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Slot Machine Listing", "SlotListing", "Slots")
+                        </span>
+
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Sim Card Listing", "CardListing", "SimCards")
+                        </span>
+
+                        <span class="nav-align-actionlink">
+                            <i class="fas fa-tools text-white"></i>
+                            @Html.ActionLink("Sim Card Activation", "NonActiveSimCards", "SimCards")
+                        </span>
+
+                    </span>
+                </span>
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Separator without title -->
+                <li class="list-group-item sidebar-separator menu-collapsed"></li>
+                <!-- /END Separator -->
+
+            </ul><!-- List Group END-->
+        </div><!-- sidebar-container END -->
+        <!-- MAIN -->
+        <div class="col">
+            <div class="container body-content">
+                <div class="form-parent">
+                    @RenderBody()
+                </div>
+            </div>
+
+        </div><!-- Main Col END -->
+    </div><!-- body-row END -->
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

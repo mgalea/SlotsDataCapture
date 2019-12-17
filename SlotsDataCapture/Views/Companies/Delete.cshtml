@@ -1,0 +1,100 @@
+﻿@model SlotsDataCapture.ENTITIES.Company
+@{ViewBag.Title = "Delete";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-delete">Delete</span>Record</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="form-location">Delete<span class="form-location-bold">Company @Html.DisplayFor(model => model.Name)</span></p>
+                <div class="row  form-row-form-content">
+                    <div class="col-md-12 offset-md-1">
+                        <div class="form-row mt-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <i class="fa fa-1x  fa-institution" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <i class="fa fa-1x  fa-institution" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_createdon" class="lbl-01">Created on:</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span for="lbl_creatredby" class="lbl-01">Created by:</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.CreatedOn)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.CreatedBy)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-1x  fa-institution" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-1x  fa-institution" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_name" class="lbl-01">Company name:</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span for="lbl_copr-number" class="lbl-01">Company number:</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Number)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row  form-row-form-controls">
+                    <div class="col-sm-6">
+                        <span>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                            }
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Back To Listings", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,77 @@
+﻿@model SlotsDataCapture.ENTITIES.SimCardManufacturers
+@{ViewBag.Title = "Delete";}
+
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-admin-tl-bar">Administration<span class="tl-fm-detail">Detail</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.Name)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            <div class="card-body">
+                <p class="form-location">Delete<span class="form-location-bold">Sim Card Manufacturer @Html.DisplayFor(model => model.Name)</span></p>
+                <div class="row  form-row-form-content">
+                    <div class="col-md-12 offset-md-1">
+                        <!-- set form width -->
+                        <div class="form-row mt-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-sim-card"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_name" class="lbl-01">Manufacturer:</span></div>
+                                    <div class="col-sm"><span class="lbl-01"></span></div>
+                                    <div class="col-sm"><span class="lbl-01"></span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+
+                            </div> @*Close Container*@
+                        </div> @*Close form-row*@
+                    </div>
+                </div> @*Close content row*@
+                <div class="row  form-row-form-controls">
+                    <div class="col-sm-6">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                        }
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Back To Admin", "Index", "SimCardManufacturers", null, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

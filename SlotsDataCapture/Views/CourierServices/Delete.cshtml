@@ -1,0 +1,46 @@
+﻿@model SlotsDataCapture.ENTITIES.CourierService
+@{ViewBag.Title = "Delete";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+             <div class="card bg-dark text-white">
+               <div class="card-body">
+                 <h5 class="tl-admin-tl-bar">Administration<span class="tl-fm-delete">Delete</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.Name)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        <i class="fa fa-gear" aria-hidden="true"></i>
+                        <label for="lbl_couriername" class="form-lb-red">Courier Name:</label>
+                    </span>
+                    <p class="lbl-01">@Html.DisplayFor(model => model.Name)</p>
+                </div>
+            </div>
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                    }
+                </div>
+                <div class="col-sm-6">
+                    @Html.ActionLink("Back To Courier Administration", "Index", "CourierServices", null, new { @class = "btn btn-outline-primary" })
+                </div>
+            </div>
+        </div> @*Close Main Card*@
+        <div class="card-header border-0">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <div>
+                        @Html.Partial("footer")
+                    </div>
+                </div>
+            </div> @*Card Header Title Content*@
+        </div>
+    </div>@*Close Parent Container*@
+</div>

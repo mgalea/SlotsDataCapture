@@ -1,0 +1,254 @@
+﻿@model SlotsDataCapture.ENTITIES.Configuration
+@{ViewBag.Title = "Details";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-detail">Details</span></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="form-location">Details <span class="form-location-bold">Machine Config  @Html.DisplayFor(model => model.Tbl_Slots.SerialNumber)</span></p>
+                <div class="row  form-row-form-content">
+                    <div class="col-md-12 offset-md-1">
+                        <div class="form-row mt-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:cadetblue">
+                                                <i class="fas fa-building"></i>
+                                                <i class="fas fa-address-card"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:cadetblue">
+                                                <i class="fas fa-building"></i>
+                                                <i class="fas fa-address-card"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:cadetblue">
+                                                <i class="fas fa-building"></i>
+                                                <i class="fas fa-phone"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_operatorname" class="lbl-01"><b>Operator</b> name:</span></div>
+                                    <div class="col-sm"><span for="lbl_operatortown" class="lbl-01"><b>Establishment</b> town:</span></div>
+                                    <div class="col-sm"><span for="lbl_operatorphone" class="lbl-01"><b>Establishment</b> phone:</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.Tbl_OperatorVenues.Name)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.Tbl_OperatorVenues.Town) </span></div>
+                                    <div class="col-sm"><span class="lbl-001"> @Html.DisplayFor(model => model.Tbl_Slots.Tbl_OperatorVenues.Phone) </span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_manufacturer" class="lbl-01"><b>Slot Machine </b>Manufacturer</span></div>
+                                    <div class="col-sm"><span for="lbl_manufacturermodel" class="lbl-01"><b>Slot Machine </b>Manufacturer Model</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.Tbl_Manufacturers.Name)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.Tbl_ManufacturerModels.Name)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_slottype" class="lbl-01"><b>Slot machine</b> type:</span></div>
+                                    <div class="col-sm"><span for="lbl_slotstatus" class="lbl-01"><b>Slot machine</b> status:</span></div>
+                                    <div class="col-sm"><span for="lbl_slotslocation" class="lbl-01"><b>Slot machine</b> location:</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.Tbl_SlotTypes.Name)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.Tbl_SlotStatus.Status)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.DeviceLocation)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:lightblue">
+                                                <i class="fas fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_slotseriale" class="lbl-01"><b>Slot Machine </b> Serial Number</span></div>
+                                    <div class="col-sm"><span for="lbl_slotasset" class="lbl-01"><b>Slot Machine </b> Asset Number</span></div>
+                                    <div class="col-sm"><span for="lbl_slotslocation" class="lbl-01"><b>Slot Machine </b> Motherboard</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.SerialNumber)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.AssetNumber)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.IsOriginalDisplay)</span></div>
+                                </div>
+
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:darkseagreen">
+                                                <i class="fa fa-calendar"></i>
+                                                <i class="fa fa-sim-card"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:darkseagreen">
+                                                <i class="fa fa-calendar"></i>
+                                                <i class="fa fa-microchip"></i>
+
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:darkseagreen">
+                                                <i class="fa fa-calendar"></i>
+                                                <i class="fa fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_simcard_activatedon" class="lbl-01"><b>Sim Card</b> Activated On</span></div>
+                                    <div class="col-sm"><span for="lbl_board_activatedon" class="lbl-01"><b>Board</b> Activated On</span></div>
+                                    <div class="col-sm"><span for="lbl_slot_activatedon" class="lbl-01"><b>Slot Machine </b> Activated On</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.SIM_ActivatedOn)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.SMIB_ActivatedOn)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.DeviceCommissioned)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:darkorange">
+                                                <i class="fa fa-sim-card"></i>
+                                                <i class="fa fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:darkorange">
+                                                <i class="fa fa-microchip"></i>
+                                                <i class="fa fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <span style=" color:darkorange">
+                                                <i class="fa fa-plug"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_cardstatus" class="lbl-01">Card status:</span></div>
+                                    <div class="col-sm"><span for="lbl_boardstatus" class="lbl-01">Board status:</span></div>
+                                    <div class="col-sm"><span for="lbl_boardstatus" class="lbl-01">Slot machine status:</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_SimCards.IsActiveDisplay)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Boards.IsAvailableDisplay)</span></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.IsAvailableDisplay)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row  form-row-form-controls">
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Edit Slot Configuration", "Edit", new { id = Model.ConfigurationID }, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Back To Listings", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

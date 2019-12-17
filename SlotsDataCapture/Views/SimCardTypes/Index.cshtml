@@ -1,0 +1,106 @@
+﻿@model IEnumerable<SlotsDataCapture.ENTITIES.SimCardTypes>
+@{ViewBag.Title = "Index";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-admin-tl-bar">Administration<span class="tl-fm-list">Sim Card Type</span>Drop Down List Control</h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>
+                            <i class="fa fa-plus"></i>
+                            @Html.ActionLink("Create New", "Create", "SimCardTypes", new { @class = "btn btn-outline-info btn-lg" })
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> @*Close Main Card*@
+        <table class="table table-hover">
+            <thead>
+                <tr class="bg-dark text-white">
+                    <th class="form-th-item">Drop-Down List Options</th>
+                    <th></th>
+                    <th class="form-th-item">Edit</th>
+                    <th class="form-th-item">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="form-tr-item">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td></td>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = item.SIM_CardTypeID }, new { @class = "btn btn-outline-warning btn-sm" }) </td>
+                        <td> @Html.ActionLink("Delete", "Delete", new { id = item.SIM_CardTypeID }, new { @class = "btn btn-outline-danger btn-sm" }) </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="card-header border-0">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <div>
+                        @Html.Partial("footer")
+                    </div>
+                </div>
+            </div> @*Card Header Title Content*@
+        </div>
+    </div>@*Close Parent Container*@
+</div> @*Close Fluid Container*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

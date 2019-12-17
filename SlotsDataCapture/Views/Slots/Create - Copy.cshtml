@@ -1,0 +1,191 @@
+﻿@model SlotsDataCapture.ENTITIES.Slots
+@{ViewBag.Title = "Create";}
+
+<div class="container-fluid">
+    @using (Html.BeginForm())
+    {@Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-top-container">
+            <div class="card form-rounder">
+                <div class="card-header">
+                    <div class="card bg-secondary text-white">
+                        <div class="card-body">
+                            <div class="form-title">
+                                <div class="form-title">Slots</div>
+                            </div>
+                        </div>
+                    </div> @*Card Header Title Content*@
+                  </div> @*Card Header End*@
+                <div class="card-body">
+                    <div class="col-sm-12 pb-3">
+                        <span class="form-title-detail">Create New Record</span>
+                 </div>
+                  <div class="row  form-row-shade-active">
+                   <div class="col-md-12 offset-md-1">
+                            <!-- set form width -->
+                            <div class="form-row mt-8">
+                                <!-- set control width -->
+
+                                <div class="col-sm-6">
+                                    <span class="form-lb-red">
+                                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                                        <i class="fa fa-building" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="parentOperatorName" class="form-lb">Assigned To Operator?</label>
+                                    @Html.DropDownList("VenueID", null, htmlAttributes: new {@class = "form-control"})
+                                    @Html.ValidationMessageFor(model => model.VenueID, "", new {@class = "text-danger"})
+                                </div>
+
+                                <div class="col-sm-6 pb-3 form-chk-span">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-microchip" aria-hidden="true"></i></span>
+                                        <label for="isDeviceOriginal" class="form-lb">Is Board Original ?</label>
+                                        <div class="form-group small">
+                                            <div class="form-check form-check-inline red-checkbox">
+                                                @Html.EditorFor(model => model.IsOriginal)
+                                                @Html.ValidationMessageFor(model => model.IsOriginal, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-sm-12"></div>
+                                <br/>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="createdOn" class="form-lb"><b class="form-lb-green">Commissioned</b>On?</label>
+                                    @Html.EditorFor(model => model.DeviceCommissioned, new {htmlAttributes = new {@class = "form-control "}})
+                                    @Html.ValidationMessageFor(model => model.DeviceCommissioned, "", new {@class = "text-danger"})
+                                </div>
+                                <div class="col-sm-4 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i></span>
+                                        <label for="deviceName" class="form-lb"><b class="form-lb-bold">Select:</b>Device Name</label>
+                                        @Html.DropDownList("SlotNameID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SlotNameID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i></span>
+                                        <label for="deviceStatus" class="form-lb"><b class="form-lb-bold">Slot:</b>Current Status</label>
+                                        @Html.DropDownList("SlotStatusID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SlotStatusID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-4 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i></span>
+                                        <label for="deviceType" class="form-lb"><b class="form-lb-bold">Select:</b>Slot Type</label>
+                                        @Html.DropDownList("SlotTypeID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SlotTypeID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i></span>
+                                        <label for="deviceModel" class="form-lb"><b class="form-lb-bold">Select:</b>Slot Model</label>
+                                        @Html.DropDownList("SlotModelID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SlotModelID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa fa-barcode" aria-hidden="true"></i></span>
+                                        <label for="manufacturerName" class="form-lb"><b class="form-lb-bold">Manufacturers</b>Name</label>
+                                        @Html.DropDownList("ManufacturerID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ManufacturerID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa fa-barcode" aria-hidden="true"></i></span>
+                                        <label for="manufacturerModel" class="form-lb"><b class="form-lb-bold">Manufacturers</b>Model</label>
+                                        @Html.DropDownList("ManufacturerModelID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ManufacturerModelID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i></span>
+                                        <label for="deviceSerialNumber" class="form-lb">Serial number</label>
+                                        @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-4 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i></span>
+                                        <label for="deviceAssetNumber" class="form-lb">Asset number</label>
+                                        @Html.EditorFor(model => model.AssetNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AssetNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <br/>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa fa-map-pin" aria-hidden="true"></i></span>
+                                        <label for="deviceLocation" class="form-lb"><b class="form-lb-bold">Device Location</b>Within Building</label>
+                                        @Html.TextAreaFor(model => model.DeviceLocation, new { style = "width: 100%; height:150px;" })
+                                        @Html.ValidationMessageFor(model => model.DeviceLocation, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-4 pb-3">
+                                    <span style="color: red">
+                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="decommisionedOn" class="form-lb"><b class="form-lb-bold">Decommissioned</b>On?</label>
+                                    @Html.EditorFor(model => model.DeviceDecommissioned, new {htmlAttributes = new {@class = "form-control "}})
+                                    @Html.ValidationMessageFor(model => model.DeviceDecommissioned, "", new {@class = "text-danger"})
+                                </div>
+                                <div class="col-sm-12 pb-3"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i></span>
+                                    <label for="deviceModel" class="form-lb"><b class="form-lb-bold">Select:</b>Slot Operational Status</label>
+                                    @Html.DropDownList("FaultStatusID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FaultStatusID, "", new { @class = "text-danger" })
+                                </div>
+                                
+                                
+                                
+
+                                <div class="col-sm-6 pb-3 form-chk-span">
+                                    <span style="color: red">
+                                        <i class="fa fa-microchip" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="isDeviceOriginal" class="form-lb"><b class="form-lb-red">Confirm:</b>Is Now Configured</label>
+                                    <div class="form-group small">
+                                        <div class="form-check form-check-inline red-checkbox">
+                                            @Html.EditorFor(model => model.IsActive)
+                                            @Html.ValidationMessageFor(model => model.IsActive, "", new {@class = "text-danger"})
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 pb-4"></div>
+                            </div> @*CLOSE form-row mt-8*@
+                            <div class="row">
+                                <div class="col-sm-6"><input type="submit" value="Create" class="btn btn-outline-success btn-lg"/></div>
+                                <div class="col-sm-6">@Html.ActionLink("Company Listings", "Index", "Companies", null, new {@class = "btn btn-outline-dark btn-lg "})</div>
+                            </div>@*Close row">*@
+                        </div> @*Close col-md-12 offset-md-1">*@
+
+                    </div> @*Close form-row-shade-active">*@
+
+                </div> @*Close Card Body*@
+                <div class="card-header">
+                    <div class="card-footer bg-secondary">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div> @*Card Footer End*@
+                </div>
+            </div> @*Card Main Card*@
+        </div>
+     
+    }
+</div>

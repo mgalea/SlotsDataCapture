@@ -1,0 +1,118 @@
+﻿@using System.Linq.Expressions
+@model PagedList.IPagedList<SlotsDataCapture.ENTITIES.Reports>
+@using PagedList;
+@using PagedList.Mvc;
+@{ViewBag.Title = "Index";}
+
+<div class="container-fluid">
+    <div class="form-parent-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-admin-tl-bar">Administration<span class="tl-fm-list">Reports</span>Listing</h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            @*BEGIN FORM*@
+            @using (@Html.BeginForm("ReportListing", "Reports", FormMethod.Get))
+            {
+                <form>
+                    <br />
+                    <div class="container py-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-search"></i>
+                                <label for="lbl_searchreports" class="form-item-title">Search Reports</label>
+                            </div>
+                        </div>
+                        @*Radio button controls begin*@
+                        <div class="row">
+                            <div class="form-check">
+                                <span class="rb-display form-control-item">
+                                    @Html.RadioButton("searchBy", "Report_DeviceType", true)
+                                    <text class="rb-text"><b>Report:</b> Device Type</text>
+                                </span>
+                            </div>
+                            <div class="form-check">
+                                <span class="rb-display form-control-item">
+                                    @Html.RadioButton("searchBy", "Report_DeviceSerialNumber")
+                                    <text class="rb-text"><b>Report:</b> Device Serial Number</text>
+                                </span>
+                            </div>
+                        </div>
+                     <br />
+                    </div>
+                    <div class="container py-6">
+                        <fieldset>
+                            @*Search input controls begin*@
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    @Html.TextBox("search", null, new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" value="search" class="btn btn-primary">
+                                        <span class="btn-search btn-primary">Search</span>
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                                @*Search input controls end*@
+                            </div>
+                            <br />
+                        </fieldset>
+                    </div>
+                    <div class="container py-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-control-item"><i class="fa fa-chart-pie"></i> Total Reports @Html.Raw(ViewBag.TotalRecords) </div>
+                            </div>
+                        </div>
+                      </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md">
+                                <ul class="pagination">
+                                    @Html.PagedListPager(Model, page => Url.Action("ReportListing", null, new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"], sortBy = Request["sortBy"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+                                </ul>
+                            </div>
+                        </div>
+                    </div> @*Close Card Body*@
+                </form>
+            }
+        </div> @*Close Main Card*@
+        <table class="table table-hover">
+            <thead>
+                @if (Model.Count() == 0)
+                // if no record currently exist prompt the member to create one
+                {
+                    <tr class="null-data-box">
+                        <td class="" colspan="10">
+                            <span class="null-data-comment">
+                                <i class="fa fa-3x  fa-times"></i>NO MATCHING RECORDS FOUND:
+                            </span>
+                        </td>
+                    </tr>
+
+                }
+                else if (Model.Count != 0)
+                // if record exists show table and data
+                {
+            <tr class="bg-dark text-white">
+                <th><i class="fa fa-sort"></i>@Html.ActionLink("Device Type", "ReportListing", new { sortBy = ViewBag.Report_DeviceType, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+                <th><i class="fa fa-sort"></i>@Html.ActionLink("Device Serial Number", "ReportListing", new { sortBy =  ViewBag.Report_DeviceSerialNumber, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+            </tr>
+                }
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                <tr class="form-tr-item">
+                    <td class="form-item">@Html.DisplayFor(modelItem => item.DeviceType)</td>
+                    <td class="form-item">@Html.DisplayFor(modelItem => item.DeviceSerialNumber)</td>
+                 </tr>
+                }
+            </tbody>
+        </table>
+     </div>@*Close Parent Container*@
+</div>

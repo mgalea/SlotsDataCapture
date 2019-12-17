@@ -1,0 +1,107 @@
+﻿@model SlotsDataCapture.ENTITIES.Boards
+@{ViewBag.Title = "Create";}
+@{
+    ViewBag.Title = "create new entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-top-container">
+            <div class="card form-rounder">
+                <div class="card-header">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-create">Add</span>Record</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="form-location">Create<span class="form-location-bold">Board Record</span></p>
+                    <div class="row  form-row-form-content">
+                        <div class="col-md-12 offset-md-1">
+                            <div class="form-row mt-8">
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_batchref" class="lbl-01">Batch ref:</label>
+                                    @Html.DropDownList("SMIBatchID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.SMIBatchID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_aerialtype" class="lbl-01"><b>Select</b> Aerial type:</label>
+                                    @Html.DropDownList("SMIBAerialID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.SMIBAerialID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_boardserial" class="lbl-01">Serial number:</label>
+                                    @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                    @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12 pb-3"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <div class="form-row">
+                                        <span class="form-style-edit">
+                                            <i class="fa fa-gear" aria-hidden="true"></i>
+                                        </span>
+                                        <span class="lbl-01">Board activation:</span>
+                                    </div>
+                                    <div class="form-row-shade-Inner">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <span class="lbl-01">Select this option, you are making this board available, within the slot machine configuration form. </span>
+                                        <label data-toggle="tooltip" data-placement="top" title="Selecting this option will made a board available for configuration.">
+                                            @Html.EditorFor(model => model.IsActive, new { @class = "form-check-input" })
+                                        </label>
+                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <div class="form-row">
+                                        <span class="form-style-edit">
+                                            <i class="fa fa-gear" aria-hidden="true"></i>
+                                        </span>
+                                        <span class="lbl-01">Board availability:</span>
+                                    </div>
+                                    <div class="form-row-shade-Inner">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                        <span class="lbl-01">Select this option if you have selected a board to be activated.</span>
+                                        <label data-toggle="tooltip" data-placement="top" title="availability is used to set the status of a board.">
+                                            @Html.EditorFor(model => model.IsAvailable, new { @class = "form-check-input" })
+                                        </label>
+                                        @Html.ValidationMessageFor(model => model.IsAvailable, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-row-form-controls">
+                    <div class="col-sm-6">
+                        <input type="submit" value="Create" class="btn btn-outline-info " />
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.ActionLink("Back To Listings", "Index", "Boards", null, new { @class = "btn btn-outline-primary" })
+                    </div>
+                </div>
+                <div class="card-header border-0">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <div>
+                                @Html.Partial("footer")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

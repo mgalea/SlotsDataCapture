@@ -1,0 +1,70 @@
+﻿@model SlotsDataCapture.ENTITIES.Returns
+@{ViewBag.Title = "Delete";}
+
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-delete">Delete</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.TrackingNumber)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        <i class="fas fa-chart-pie"></i>
+                        <label for="lbl_returnedon" class="form-lb-red">Returned On:</label>
+                        <span class="form-dt-detail"><b>@Html.DisplayFor(model => model.ReturnDate) </b></span>
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        <i class="fas fa-chart-pie"></i>
+                        <label for="lbl_createdby" class="form-lb-red">Returned By:</label>
+                        <span class="form-dt-detail"><b>@Html.DisplayFor(model => model.ReturnedBy) </b></span>
+                    </span>
+                </div>
+            </div>
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        <i class="fas fa-chart-pie"></i>
+                        <label for="lbl_trackingnumber" class="form-lb-red">Tracking Number:</label>
+                        <span class="form-dt-detail"><b>@Html.DisplayFor(model => model.TrackingNumber) </b></span>
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        <i class="fas fa-chart-pie"></i>
+                        <label for="lbl_device" class="form-lb-red">Courier Service:</label>
+                        <span class="form-dt-detail"><b>@Html.DisplayFor(model => model.Tbl_CourierService.Name) </b></span>
+                    </span>
+                </div>
+            </div>
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        @Html.ActionLink("Delete Item", "Delete", new { id = Model.ReturnID }, new { @class = "btn btn-outline-danger" })
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-style-details">
+                        @Html.ActionLink("Back To Listing", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })
+                    </span>
+                </div>
+            </div>
+        </div> @*Close Main Card*@
+        <div class="card-header border-0">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <div>
+                        @Html.Partial("footer")
+                    </div>
+                </div>
+            </div> @*Card Header Title Content*@
+        </div>
+    </div>@*Close Parent Container*@
+</div>

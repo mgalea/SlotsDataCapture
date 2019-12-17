@@ -1,0 +1,107 @@
+﻿@model SlotsDataCapture.ENTITIES.SlotHarnesses
+@{ViewBag.Title = "Delete";}
+
+
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-delete">Delete</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.Name)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            <div class="card-body">
+                <p class="form-location">Slot Machine Harness<span class="form-location-bold">Delete</span></p>
+                <div class="row  form-row-form-content">
+                    <div class="col-md-12 offset-md-1">
+                        <!-- set form width -->
+                        <div class="form-row mt-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_createdon" class="lbl-01">Harness for Slot Ref</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span for="lbl_creatredby" class="lbl-01">Created By</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.SerialNumber)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-1x  fa-institution" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-1x  fa-institution" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_name" class="lbl-01">Company Name</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span for="lbl_copr-number" class="lbl-01">Harness Name</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                </div>
+
+                            </div> @*Close Container*@
+                        </div> @*Close form-row*@
+                    </div>
+                </div> @*Close content row*@
+                <div class="row  form-row-form-controls">
+                    <div class="col-sm-6">
+                        <span>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                            }
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Back To Listings", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                </div> @*Close form-row-form-controls*@
+            </div> @*Close  row form controls*@
+
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div>
+        </div>@*Close card-body*@
+    </div> @*Close form-top-container*@
+</div> @*Close Final*@
+
+

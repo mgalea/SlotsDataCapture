@@ -1,0 +1,69 @@
+﻿@model SlotsDataCapture.ENTITIES.SlotImages
+@{ViewBag.Title = "Delete";}
+
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card form-rounder">
+            <div class="card-header">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <div class="form-title">Slot Image</div>
+                    </div> @*Card Header Title Content*@
+                </div> @*Card Header End*@
+                <div class="card-body">
+                    <div class="col-sm-12 pb-3">
+                        <span class="form-title-detail">Delete Uploaded Image For Machine @Html.DisplayFor(model => model.Tbl_Slots.SerialNumber)</span>
+                    </div>
+                   
+                    <div class="row  form-row-shade-active">
+                        <div class="col-sm-4">
+                            <span class="form-style-delete">
+                                <i class="fa fa-1x fa-building-o" aria-hidden="true"></i>
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                            <label for="lbl_operator_createdOn" class="form-lb">Created On</label>
+                            <p class="form-dt-detail"><b>@Html.DisplayFor(model => model.CreatedOn) </b></p>
+                        </div>
+                        <div class="col-sm-4">
+                            <span class="form-style-delete">
+                                <i class="fa fa-1x fa-building-o" aria-hidden="true"></i>
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </span>
+                            <label for="lbl_sloperator_createdOn" class="form-lb">Machine Reference</label>
+                            <p class="form-dt-detail"><b>@Html.DisplayFor(model => model.Tbl_Slots.SerialNumber) </b></p>
+                        </div>
+                        <div class="col-sm-4">
+              <span class="form-style-delete">
+                                <i class="fa fa-1x fa-building-o" aria-hidden="true"></i>
+                                <i class="fa  fa-sort-numeric-desc" aria-hidden="true"></i>
+                            </span>
+                            <label for="lbl_venueName" class="form-lb">Slot Machine Location</label>
+                            <p class="form-dt-detail"><b>@Html.DisplayFor(model => model.Tbl_OperatorVenues.Name) </b></p>
+                        </div>
+                    </div>
+                </div> @*Card Body End*@
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row form-buttons-panel">
+                        <div class="col-4">
+                            <input type="submit" value="Delete" class="btn btn-outline-danger btn-lg" />
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-4 float-lg-right">
+                            @Html.ActionLink("Company Listings", "Index", "Companies", null, new { @class = "btn btn-outline-danger btn-lg " })
+                        </div>
+                    </div>
+                }
+                <div class="card-footer bg-secondary">
+                    <div>@Html.Partial("footer")</div>
+                </div> @*Card Footer End*@
+            </div>
+
+        </div> @*Close Card Body*@
+    </div> @*Card Main Card*@
+</div>
+
+
+

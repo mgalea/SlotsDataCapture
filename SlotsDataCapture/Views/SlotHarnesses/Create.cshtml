@@ -1,0 +1,201 @@
+﻿@model SlotsDataCapture.ENTITIES.SlotHarnesses
+@{ViewBag.Title = "Create";}
+
+
+<div class="container-fluid">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-top-container">
+            <div class="card form-rounder">
+                <div class="card-header">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-create">Create</span>New Record</h5>
+                        </div>
+                    </div> @*Card Header Title Content*@
+                </div>
+                @*Card Header End*@
+                <div class="card-body">
+                    <p class="form-location">Slot Machine Harness<span class="form-location-bold">Create</span></p>
+                    <div class="row  form-row-form-content">
+
+                        <div class="col-md-12 offset-md-1">
+                            <!-- set form width -->
+                            <div class="form-row mt-8">
+                                <!-- set control width -->
+                                <div class="col-sm-12 pb-3">
+                                    <span class="form-lb-red">
+                                        <i class="fa fa fa-arrow-up" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_slotSerial" class="lbl-01">Assign Harness Slot Machine</label>
+                                    @Html.DropDownList("SlotID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.SlotID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12 pb-4"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_cableName" class="lbl-01">Cable Name</label>
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_cableLength" class="lbl-01">Cable Length (cms)</label>
+                                    @Html.EditorFor(model => model.CableLength, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CableLength, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="com_jumperType" class="lbl-01"><b>COM</b> Jumper Type</label>
+                                        @Html.EditorFor(model => model.COM_Jumper_Type, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.COM_Jumper_Type, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="com_jumperNumber" class="lbl-01"><b>COM</b> Jumper Number</label>
+                                    @Html.EditorFor(model => model.COM_Jumper_Number, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.COM_Jumper_Number, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="com_jumperPowerNumber" class="lbl-01"><b>COM</b> Power Jumper Number</label>
+                                    @Html.EditorFor(model => model.COM_Power_Jumper_Number, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.COM_Power_Jumper_Number, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12 pb-4"></div>
+                                @*BS Section*@
+                            <div class="col-sm-6 pb-3">
+                                <span class="form-style-create">
+                                    <i class="fa fa-plug"></i>
+                                    <i class="fa fa-gear" aria-hidden="true"></i>
+                                </span>
+                                <label for="bs_dataConnect" class="lbl-01"><b class="bs-data-type">BS Data</b> Connect</label>
+                                @Html.EditorFor(model => model.BS_DataConnect, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BS_DataConnect, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 pb-3">
+                                <span class="form-style-create">
+                                    <i class="fa fa-plug"></i>
+                                    <i class="fa fa-gear" aria-hidden="true"></i>
+                                </span>
+                                <label for="bs_powerConnect" class="lbl-01"><b class="bs-data-type">BS Power</b> Connect</label>
+                                @Html.EditorFor(model => model.BS_PowerConnect, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BS_PowerConnect, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 pb-3">
+                                <span class="form-style-create">
+                                    <i class="fa fa-plug"></i>
+                                    <i class="fa fa-gear" aria-hidden="true"></i>
+                                </span>
+                                <label for="bs_dataConnectType" class="lbl-01"><b class="bs-data-type">BS Data</b> Connect <b>Type</b></label>
+                                @Html.EditorFor(model => model.BS_DataConnectType, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BS_DataConnectType, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 pb-3">
+                                <span class="form-style-create">
+                                    <i class="fa fa-plug"></i>
+                                    <i class="fa fa-gear" aria-hidden="true"></i>
+                                </span>
+                                <label for="bs_dataConnectPinOut" class="lbl-01"><b class="bs-data-type">BS Data</b> Connect <b>Pin Out</b></label>
+                                @Html.EditorFor(model => model.BS_DataConnect_PinOut, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BS_DataConnect_PinOut, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6 pb-3">
+                                <span class="form-style-create">
+                                    <i class="fa fa-plug"></i>
+                                    <i class="fa fa-gear" aria-hidden="true"></i>
+                                </span>
+                                <label for="bs_powerPinConnector" class="lbl-01"><b class="bs-data-type">BS Power</b> Connect <b>Pin Out</b></label>
+                                @Html.EditorFor(model => model.BS_PowerConnect_PinOut, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BS_PowerConnect_PinOut, "", new { @class = "text-danger" })
+                            </div>
+                                @*DS Section*@
+                                <div class="col-sm-12 pb-4"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="ds_dataConnect" class="lbl-01"><b class="ds-data-type">DS Data</b> Connect</label>
+                                    @Html.EditorFor(model => model.DS_DataConnect, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DS_DataConnect, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="ds_powerConnect" class="lbl-01"><b class="ds-data-type">DS Power</b> Connect</label>
+                                    @Html.EditorFor(model => model.DS_PowerConnect, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DS_PowerConnect, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="ds_powerConnectType" class="lbl-01"><b class="ds-data-type">DS Data</b> Connect <b>Type</b></label>
+                                    @Html.EditorFor(model => model.DS_DataConnectType, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DS_DataConnectType, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="ds_dataConnectPinOut" class="lbl-01"><b class="ds-data-type">DS Data</b> Connect <b>Pin Out</b></label>
+                                    @Html.EditorFor(model => model.DS_DataConnect_PinOut, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DS_DataConnect_PinOut, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-create">
+                                        <i class="fa fa-plug"></i>
+                                        <i class="fa fa-gear" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="ds_powerConnectPinOut" class="lbl-01"><b class="ds-data-type">DS Power</b> Connect <b>Pin Out</b></label>
+                                    @Html.EditorFor(model => model.DS_PowerConnect_PinOut, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DS_PowerConnect_PinOut, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12 pb-4"></div>
+                            </div>
+
+                        </div> @*Close form-row mt-8">*@
+                    </div> @*Close col-md-12 offset-md-1">*@
+                </div> @*Close Card Body*@
+                <div class="row form-row-form-controls">
+                    <div class="col-sm-6">
+                        <input type="submit" value="Create" class="btn btn-outline-info " />
+                    </div>
+                    <div class="col-sm-6">@Html.ActionLink("Back To Listings", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })</div>
+                </div>
+                <div class="card-header border-0">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <div>
+                                @Html.Partial("footer")
+                            </div>
+                        </div>
+                    </div> @*Card Header Title Content*@
+                </div>
+            </div> @*Card Main Card*@
+        </div>
+    }
+</div>

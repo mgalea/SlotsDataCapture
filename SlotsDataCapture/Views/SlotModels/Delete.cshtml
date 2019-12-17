@@ -1,0 +1,71 @@
+﻿@model SlotsDataCapture.ENTITIES.SlotModels
+@{ViewBag.Title = "Delete";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-admin-tl-bar">Administration<span class="tl-fm-delete">Delete</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.Name)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            <div class="card-body">
+                <p class="form-location">Slot Machine Model<span class="form-location-bold">Delete</span></p>
+                <div class="row  form-row-form-content">
+                    <div class="col-md-12 offset-md-1">
+                        <!-- set form width -->
+                        <div class="form-row mt-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-delete">
+                                            <i class="fa fa-microchip" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span for="lbl_name" class="lbl-01">Slot Model</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"></div>
+                                </div>
+                            </div> @*Close Container*@
+                        </div> @*Close form-row*@
+                    </div>
+                </div> @*Close content row*@
+                <div class="row  form-row-form-controls">
+                    <div class="col-sm-6">
+                        <span>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                            }
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Back To Admin", "Index", "SlotModels", null, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                </div> @*Close form-row-form-controls*@
+            </div> @*Close  row form controls*@
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div>
+        </div>@*Close card-body*@
+    </div> @*Close form-top-container*@
+</div> @*Close Final*@

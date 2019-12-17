@@ -1,0 +1,113 @@
+﻿@model SlotsDataCapture.ENTITIES.SimCardBatches
+@{ViewBag.Title = "Delete";}
+
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-admin-tl-bar">Administration<span class="tl-fm-delete">Delete</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.BatchReference)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+        <div class="card-body">
+            <p class="form-location">Delete<span class="form-location-bold">Sim Card Batch @Html.DisplayFor(model => model.BatchReference)</span></p>
+            <div class="row  form-row-form-content">
+                <div class="col-md-12 offset-md-1">
+                    <!-- set form width -->
+                    <div class="form-row mt-10">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <span class="form-style-delete">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <i class="fa fa-sim-card"></i>
+                                    </span>
+                                </div>
+                                <div class="col-sm">
+                                    <span class="form-style-delete">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <i class="fa fa-sim-card"></i>
+                                    </span>
+                                </div>
+                                <div class="col-sm">
+                                    <span class="form-style-delete">
+                                        <i class="fa fa-sim-card"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm"><span for="lbl_receivedon" class="lbl-01">Received On:</span></div>
+                                <div class="col-sm"><span for="lbl_batchnumber" class="lbl-01">Activated On:</span></div>
+                                <div class="col-sm"><span for="lbl_serialnumber" class="lbl-01">Reference Number:</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.ReceivedOn)</span></div>
+                                <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.ActivatedOn)</span></div>
+                                <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.BatchReference)</span></div>
+                            </div>
+                            <div class="row form-spliter"></div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <span class="form-style-delete">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <i class="fa fa-sim-card"></i>
+                                    </span>
+                                </div>
+                                <div class="col-sm">
+                                    <span class="form-style-delete">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <i class="fa fa-sim-card"></i>
+                                    </span>
+                                </div>
+                                <div class="col-sm">
+                                    <span class="form-style-delete">
+                                        <i class="fa fa-sim-card"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm"><span for="lbl_manufacturername" class="lbl-01">Manufacturer Name:</span></div>
+                                <div class="col-sm"><span for="lbl_activatedon" class="lbl-01">Quantity:</span></div>
+                                <div class="col-sm"><span for="lbl_location" class="lbl-01">Location:</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_SimCardManufacturers.Name)</span></div>
+                                <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.UnitsReceived)</span></div>
+                                <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.CardLocation)</span></div>
+                            </div>
+                        </div> @*Close Container*@
+                    </div> @*Close form-row*@
+                </div>
+            </div> @*Close content row*@
+
+            <div class="row  form-row-form-controls">
+                <div class="col-sm-6">
+                    <span>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                        }
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-style-details">
+                        @Html.ActionLink("Back To Listings", "Index", "SimCardBatches", null, new { @class = "btn btn-outline-primary" })
+                    </span>
+                </div>
+            </div> @*Close form-row-form-controls*@
+        </div> @*Close  row form controls*@
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div>
+        </div>@*Close card-body*@
+    </div> @*Close form-top-container*@
+</div> @*Close Final*@

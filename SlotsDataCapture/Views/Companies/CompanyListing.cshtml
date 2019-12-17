@@ -1,0 +1,133 @@
+﻿@using System.Linq.Expressions
+@model PagedList.IPagedList<SlotsDataCapture.ENTITIES.Company>
+@using PagedList;
+@using PagedList.Mvc;
+@{ViewBag.Title = "Index";}
+<div class="container-fluid">
+    <div class="form-parent-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-list">Company</span>Listing</h5>
+                    </div>
+                </div>
+            </div>
+            @using (@Html.BeginForm("CompanyListing", "Companies", FormMethod.Get))
+            {
+                <form>
+                    <br />
+                    <div class="container py-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-search"></i>
+                                <label for="lbl_searchcompanies" class="form-item-title">Search Companies</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-check">
+                                <span class="rb-display form-control-item">
+                                    @Html.RadioButton("searchBy", "Company_Name", true)
+                                    <text class="rb-text">Name</text>
+                                </span>
+                            </div>
+                            <div class="form-check">
+                                <span class="rb-display form-control-item">
+                                    @Html.RadioButton("searchBy", "Company_Registration")
+                                    <text class="rb-text">Corp Number</text>
+                                </span>
+                            </div>
+                            <div class="form-check">
+                                <span class="rb-display form-control-item">
+                                    @Html.RadioButton("searchBy", "Company_Location")
+                                    <text class="rb-text">Location</text>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-check">
+                                <span class="rb-display form-control-item-active">
+                                    @Html.RadioButton("searchBy", "Activity")
+                                    <text class="rb-text">Activity Status</text>
+                                </span>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="container py-6">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    @Html.TextBox("search", null, new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" value="search" class="btn btn-primary">
+                                        <span class="btn-search btn-primary">Search</span>
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                        </fieldset>
+                    </div>
+                    <div class="container py-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-control-item"><i class="fa fa-chart-pie"></i> Total companies @Html.Raw(ViewBag.TotalRecords) </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-control-item"><i class="fa fa-chart-pie"></i> Total <b style="color:green">Acvtive</b> companies @Html.Raw(ViewBag.TotalActiveRecords) </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md">
+                                <ul class="pagination">
+                                    @Html.PagedListPager(Model, page => Url.Action("CompanyListing", null, new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"], sortBy = Request["sortBy"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+        <table class="table table-hover">
+            <thead>
+                @if (Model.Count() == 0)
+                {
+                    <tr class="null-data-box">
+                        <td class="" colspan="10">
+                            <span class="null-data-comment">
+                                <i class="fa fa-3x  fa-times"></i>NO MATCHING RECORDS FOUND:
+                            </span>
+                        </td>
+                    </tr>
+                }
+                else if (Model.Count != 0)
+                {
+                    <tr class="bg-dark text-white">
+                        <th><i class="fa fa-sort"></i>@Html.ActionLink("Active?", "CompanyListing", new { sortBy = ViewBag.Activity, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+                        <th><i class="fa fa-sort"></i>@Html.ActionLink("Company Name", "CompanyListing", new { sortBy = ViewBag.Company_Name, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+                        <th><i class="fa fa-sort"></i>@Html.ActionLink("Registration", "CompanyListing", new { sortBy = ViewBag.Company_Registration, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+                        <th><i class="fa fa-sort"></i>@Html.ActionLink("Location", "CompanyListing", new { sortBy = ViewBag.Company_Location, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+                    </tr>
+                }
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="form-tr-item">
+
+                        <td class="@(item.IsActive ? "account-active" : "account-inactive ")"></td>
+                        <td class="form-item">@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Number)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Town)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 

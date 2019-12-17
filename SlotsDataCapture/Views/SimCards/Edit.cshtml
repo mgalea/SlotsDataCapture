@@ -1,0 +1,103 @@
+﻿@model SlotsDataCapture.ENTITIES.SimCards
+@{ViewBag.Title = "Edit";}
+    <div class="container-fluid">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(x => x.SIMCardID)
+            <div class="form-top-container">
+                <div class="card form-rounder">
+                    <div class="card-header">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <h5 class="tl-admin-tl-bar">Administration<span class="tl-fm-edit">Edit</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.SerialNumber)</span></h5>
+                            </div>
+                        </div> @*Card Header Title Content*@
+                    </div>
+                    @*Card Header End*@
+                    <div class="card-body">
+                        <div class="row  form-row-shade-active">
+                            <div class="col-md-12 offset-md-1">
+                                <!-- set form width -->
+
+                                <div class="form-row mt-8">
+                                    <!-- set control width -->
+                                    <div class="col-sm-6 pb-3">
+                                        <span class="form-style-edit">
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                        <label for="lbl_simbatch" class="lbl-01">Sim Card Batch:</label>
+                                        @Html.DropDownList("SIMBatchID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SIMBatchID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6 pb-3">
+                                        <span class="form-style-edit">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                        <label for="lbl_addedOn" class="form-lb"><b class="lbl-01">Sim Card:</b> Activated On:</label>
+                                        <p class="lbl-01"> @Html.DisplayFor(model => model.ActivatedOn)</p>
+                                        @Html.HiddenFor(model => model.ActivatedOn)
+                                    </div>
+
+                                    <div class="col-sm-6 pb-3">
+                                        <span class="form-style-edit">
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                        <label for="lbl_serialNumber" class="form-lb"><b class="form-lb-green">Sim Card:</b> Serial Number</label>
+                                        @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-sm-6 pb-3">
+                                        <span class="form-style-edit">
+                                            <i class="fa fa-gear" aria-hidden="true"></i>
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                        <label for="lbl_serialNumber" class="form-lb"><b class="form-lb-green">Sim Card:</b> Mobile Number</label>
+                                        @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-12 pb-3">
+                                        <span class="form-style-edit">
+                                            <i class="fa fa-toogle" aria-hidden="true"></i>
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                        <label for="lbl_activityStatus" class="form-lb"><b class="lbl-01">Sim Card:</b> Active (in use)</label>
+                                        @Html.EditorFor(model => model.IsActive)
+                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-12 pb-3">
+                                        <span class="form-style-edit">
+                                            <i class="fa fa-toogle" aria-hidden="true"></i>
+                                            <i class="fas fa-sim-card"></i>
+                                        </span>
+                                        <label for="lbl_availability" class="form-lb"><b class="lbl-01">Sim Card:</b> Availability (make available)</label>
+                                        @Html.EditorFor(model => model.IsAvailable)
+                                        @Html.ValidationMessageFor(model => model.IsAvailable, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="submit" value="Save" class="btn btn-outline-warning " />
+                                    </div>
+                                    <div class="col-sm-6">@Html.ActionLink("Back To Administration ", "ActiveSimcards", "SimCards", null, new { @class = "btn btn-outline-primary" })</div>
+                                </div>
+                            </div>
+                            @*Close form-row mt-8">*@
+                        </div> @*Close col-md-12 offset-md-1">*@
+                    </div> @*Close Card Body*@
+                    <div class="card-header border-0">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <div>
+                                    @Html.Partial("footer")
+                                </div>
+                            </div>
+                        </div> @*Card Header Title Content*@
+                    </div>
+                </div> @*Card Main Card*@
+            </div>
+        }
+    </div>

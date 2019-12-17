@@ -1,0 +1,259 @@
+﻿@model SlotsDataCapture.ENTITIES.SlotHarnesses
+@{ViewBag.Title = "Details";}
+
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-detail">Detail</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.Name)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+
+            <div class="card-body">
+                <p class="form-location">Slot Machine Harness<span class="form-location-bold">Detail</span></p>
+                <div class="row  form-row-form-content">
+                    <div class="col-md-12 offset-md-1">
+                        <!-- set form width -->
+                        <div class="form-row mt-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01">Associated Slot Machine</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Tbl_Slots.SerialNumber)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01">Harness Name</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-01">Harness length (cms)</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.Name)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.CableLength)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                <div class="col-sm"></div>
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01"><b>COM</b> Jumper Type</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-01"><b>COM</b> Jumper Number</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.COM_Jumper_Type)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.COM_Jumper_Number)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                <div class="col-sm"></div>
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:darkorange">BS</b> Jumper Type</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:darkorange">BS</b> Jumper Number</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.COM_Jumper_Type)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.COM_Jumper_Number)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                <div class="col-sm"></div>
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:darkorange">BS</b> Data Connect</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:darkorange">BS</b> Data Connect Type</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.BS_DataConnect)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.BS_DataConnectType)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                <div class="col-sm"></div>
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:darkorange">BS</b> Power Connect Pin Out</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:darkorange">BS</b> Data Connect Pin Out</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.BS_PowerConnect_PinOut)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.BS_DataConnect_PinOut)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:purple">DS</b> Data Connect</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:purple">DS</b> Data Connect Type</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.DS_DataConnect)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.DS_DataConnectType)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                                <div class="row">
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                <div class="col-sm"></div>
+                                <div class="col-sm">
+                                        <span class="form-style-details">
+                                            <i class="fa fa-plug"></i>
+                                            <i class="fa fa-pensil"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:purple">DS</b> Power Connect</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-01"><b style="color:purple">DS</b> Data Connect Pin Out</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.DS_PowerConnect)</span></div>
+                                    <div class="col-sm"></div>
+                                    <div class="col-sm"><span class="lbl-001">@Html.DisplayFor(model => model.DS_DataConnect_PinOut)</span></div>
+                                </div>
+                                <div class="row form-spliter"></div>
+                            </div> @*Close Container*@
+                        </div> @*Close form-row*@
+                    </div>
+                </div> @*Close content row*@
+                <div class="row  form-row-form-controls">
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Edit Harness", "Edit", new { id = Model.SlotHarnessID }, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="form-style-details">
+                            @Html.ActionLink("Back To Listings", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })
+                        </span>
+                    </div>
+                </div> @*Close form-row-form-controls*@
+            </div> @*Close  row form controls*@
+
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div>
+        </div>@*Close card-body*@
+    </div> @*Close form-top-container*@
+</div> @*Close Final*@
+
+
+
+
+

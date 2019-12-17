@@ -1,0 +1,102 @@
+﻿@model SlotsDataCapture.ENTITIES.Returns
+@{ViewBag.Title = "Edit";}
+<div class="container-fluid">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(x => x.ReturnID)
+        <div class="form-top-container">
+            <div class="card form-rounder">
+                <div class="card-header">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-edit">Edit</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.TrackingNumber)</span></h5>
+                        </div>
+                    </div> @*Card Header Title Content*@
+                </div>
+                <div class="card-body">
+                    <div class="col-sm-12 pb-3">Create A Return Item</div>
+
+                    <div class="row  form-row-shade-active">
+                        <div class="col-md-12 offset-md-1">
+                            <!-- set form width -->
+                            <div class="form-row mt-8">
+                                @*Sim Cards ---*@
+                                <!-- set control width -->
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </span>
+                                    <label for="lbl_reportreference" class="lbl-01">Reference:</label>
+                                    @Html.DropDownList("ReportID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ReportID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </span>
+                                    <label for="lbl_couriername" class="lbl-01">Courier Name:</label>
+                                    @Html.DropDownList("CourierID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.CourierID, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        <i class="fas fa-chart-pie"></i>
+                                    </span>
+                                    <label for="lbl_returnedon" class="lbl-01">Return Date:</label>
+                                    <p class="lbl-01">@Html.DisplayFor(model => model.ReturnDate)</p> 
+                                           @Html.HiddenFor(model => model.ReturnDate)
+                                </div>
+
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <i class="fas fa-chart-pie"></i>
+                                    </span>
+                                    <label for="lbl_returnedby" class="lbl-01">Return By:</label>
+                                    <p class="lbl-01">@Html.DisplayFor(model => model.ReturnedBy)</p>
+                                    @Html.HiddenFor(model => model.ReturnedBy)
+                                </div>
+
+                                <div class="col-sm-12 pb-4"></div>
+                                <div class="col-sm-10 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </span>
+                                    <label for="lbl_trackingnumber" class="form-lb">Tracking Number</label>
+                                    @Html.EditorFor(model => model.TrackingNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TrackingNumber)
+                                </div>
+                                <div class="col-sm-12 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </span>
+                                    @Html.EditorFor(model => model.Dispatched, new { @class = "form-check-input" })
+                                    <span class="lbl-01">Confirm: <b>as returned</b></span>
+                                    @Html.ValidationMessageFor(model => model.Dispatched, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="submit" value="Save" class="btn btn-outline-warning btn-lg" />
+                                </div>
+                                <div class="col-sm-6">@Html.ActionLink("Returns", "Index", "Returns", null, new { @class = "btn btn-outline-info btn-lg " })</div>
+                            </div>
+                        </div>
+                        @*Close form-row mt-8">*@
+                    </div> @*Close col-md-12 offset-md-1">*@
+                </div> @*Close Card Body*@
+                <div class="card-header">
+                    <div class="card bg-secondary text-white">
+                        <div>
+                            @Html.Partial("footer")
+                        </div>
+                    </div> @*Card Footer End*@
+                </div>
+            </div> @*Card Main Card*@
+        </div>
+    }
+</div>

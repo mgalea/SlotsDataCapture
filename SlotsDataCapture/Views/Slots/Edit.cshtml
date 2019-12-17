@@ -1,0 +1,203 @@
+﻿@model SlotsDataCapture.ENTITIES.Slots
+@{ViewBag.Title = "Edit";}
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<div class="container-fluid">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(x=>x.SlotID)
+        <div class="form-top-container">
+            <div class="card form-rounder">
+                <div class="card-header">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-edit">Edit</span>Machine Serial Number<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.SerialNumber)</span></h5>
+                        </div>
+                    </div> @*Card Header Title Content*@
+                </div>
+                @*Card Header End*@
+                <div class="card-body">
+                    <p class="form-location">Slot Machine<span class="form-location-bold">Configure Machnine</span></p>
+                    <div class="row  form-row-form-content">
+
+                        <div class="col-md-12 offset-md-1">
+                            <!-- set form width -->
+                            <div class="form-row mt-8">
+                                <!-- set control width -->
+                                <div class="col-sm-12 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa fa-calculator" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_commissionedOn" class="lbl-01">Machine Commissioned On</label>
+                                    <br />
+                                  <span class="lbl-01">@Html.DisplayFor(model => model.DeviceCommissioned)</span>
+                                    @Html.HiddenFor(model => model.DeviceCommissioned)
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_manufacturer" class="lbl-01">Machine Manufacturer</label>
+                                    @Html.DropDownListFor(model => model.ManufacturerID, ViewBag.ListManufacturers as SelectList, "Select Manufacturer", new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.ManufacturerID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_manufacturermodel" class="lbl-01">Manufacturer Model</label>
+                                    @Html.DropDownListFor(model => model.ManufacturerModelID, new SelectList(" "), "-- Select Available Models --", new { @class = "form-control field-validation" })
+
+                                    @Html.ValidationMessageFor(model => model.ManufacturerModelID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12 pb-3"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_serialnumber" class="lbl-01">Machine Serial Number</label>
+                                    @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                    @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_assetnumber" class="lbl-01">Machine Asset Number</label>
+                                    @Html.EditorFor(model => model.AssetNumber, new { htmlAttributes = new { @class = "form-control field-validation" } })
+                                    @Html.ValidationMessageFor(model => model.AssetNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_model" class="lbl-01">Machine Model</label>
+                                    @Html.DropDownList("SlotModelID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.SlotModelID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_type" class="lbl-01">Machine Game Type</label>
+                                    @Html.DropDownList("SlotTypeID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.SlotTypeID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_name" class="lbl-01">Unit Type</label>
+                                    @Html.DropDownList("SlotNameID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.SlotNameID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_slotstatus" class="lbl-01">Operational Status</label>
+                                    @Html.DropDownList("SlotStatusID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.SlotStatusID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-10 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_location" class="lbl-01">Machine Location</label>
+                                    @Html.TextAreaFor(model => model.DeviceLocation, new { @class = "form-control textarea-plus" })
+                                    @Html.ValidationMessageFor(model => model.DeviceLocation, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12 pb-3"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-microchip" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    @Html.EditorFor(model => model.IsOriginal, new { @class = "form-check-input field-validation" })
+                                    <span class="lbl-01">Orignal Motherboard?</span>
+                                    @Html.ValidationMessageFor(model => model.IsOriginal, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-sm-12 pb-3"></div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    <label for="lbl_establishment" class="lbl-01">Assign Machine to Establishment</label>
+                                    @Html.DropDownList("VenueID", null, htmlAttributes: new { @class = "form-control field-validation" })
+                                    @Html.ValidationMessageFor(model => model.VenueID, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <i class="fa  fa-pencil-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                                    </span>
+                                    @Html.EditorFor(model => model.IsActive, new { @class = "form-check-input field-validation" })
+                                    <span class="lbl-01">Configured?</span>
+                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 pb-3">
+                                    <span class="form-style-edit">
+                                        <span style="color:red">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                                        </span>
+                                    </span>
+                                    <label for="lbl_decommisionedon" class="lbl-01">Machine Decomissioned On</label>
+                                    @Html.EditorFor(model => model.DeviceDecommissioned, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DeviceDecommissioned, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div> @*Close form-row mt-8">*@
+                    </div> @*Close col-md-12 offset-md-1">*@
+                </div> @*Close Card Body*@
+                <div class="row form-row-form-controls">
+                    <div class="col-sm-6">
+                        <input type="submit" value="Create" class="btn btn-outline-info " />
+                    </div>
+                    <div class="col-sm-6">@Html.ActionLink("Back To Listings", "Index", "Companies", null, new { @class = "btn btn-outline-primary" })</div>
+                </div>
+                <div class="card-header border-0">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <div>
+                                @Html.Partial("footer")
+                            </div>
+                        </div>
+                    </div> @*Card Header Title Content*@
+                </div>
+            </div> @*Card Main Card*@
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#ManufacturerID").change(function () {
+            $.get("/Slots/GetManufacturerModels",
+                {
+                    ManufacturerId: $("#ManufacturerID").val()
+                }, function (data) {
+
+                    $("#ManufacturerModelID").empty();
+
+                    $.each(data, function (index, row) {
+                        $("#ManufacturerModelID").append("<option value='" + row.ManufacturerID + "'>" + row.Name + "</option>")
+                    });
+                });
+        })
+    });
+</script>

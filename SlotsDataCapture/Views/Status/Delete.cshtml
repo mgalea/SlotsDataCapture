@@ -1,0 +1,45 @@
+﻿@model SlotsDataCapture.ENTITIES.ActivationStatus
+@{ViewBag.Title = "Delete";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5>S.D.C <span class="title-colour-sector">Delete</span>Drop-Down List Item:<span class="title-colour-sector"> @Html.DisplayFor(model => model.Status)</span>   </h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        <i class="fa fa-gear" aria-hidden="true"></i>
+                        <label for="lbl_receivedon" class="form-lb"><b class="form-lb-bold">Activation Status:</b> Entry:</label>
+                        <span class="form-dt-detail"><b>@Html.DisplayFor(model => model.Status) </b></span>
+                    </span>
+                </div>
+             </div>
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    <span class="form-style-delete">
+                        @Html.ActionLink("Delete Item", "Delete", new { id = Model.ActivationStatusID }, new { @class = "btn btn-outline-danger" })
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-style-details">
+                        @Html.ActionLink("Back To Board Administration", "Index", "AdminActivationStatus", null, new { @class = "btn btn-outline-primary" })
+                    </span>
+                </div>
+            </div>
+        </div> @*Close Main Card*@
+        <div class="card-header border-0">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <div>
+                        @Html.Partial("footer")
+                    </div>
+                </div>
+            </div> @*Card Header Title Content*@
+        </div>
+    </div>@*Close Parent Container*@
+</div> @*Close Fluid Container*@

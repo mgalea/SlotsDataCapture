@@ -1,0 +1,132 @@
+﻿@using System.Linq.Expressions
+@model PagedList.IPagedList<SlotsDataCapture.ENTITIES.SimCards>
+@using PagedList;
+@using PagedList.Mvc;
+@{ViewBag.Title = "Index";}
+<div class="container-fluid">
+    <div class="form-parent-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                    <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-list">Inactive-Sim card</span>Listings</h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+            @*BEGIN FORM*@
+            @using (@Html.BeginForm("InactiveSimCards", "SimCards", FormMethod.Get))
+            {
+                <form>
+                    <br />
+                    <div class="container py-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fa fa-search"></i>
+                                <label for="lbl_searchsimcards" class="form-item-title">Search Cards</label>
+                            </div>
+                        </div>
+                        @*Radio button controls begin*@
+                    <div class="row">
+                        <div class="form-check">
+                            <span class="rb-display form-control-item">
+                                @Html.RadioButton("searchBy", "SimCard_BatchNumber")
+                                <text class="rb-text"><b>Find By:</b> Batch Number</text>
+                            </span>
+                        </div>
+                        <div class="form-check">
+                            <span class="rb-display form-control-item">
+                                @Html.RadioButton("searchBy", "SimCard_SerialNumber")
+                                <text class="rb-text"><b>Find By:</b> Serial Number</text>
+                            </span>
+                        </div>
+                    </div>
+                        <br />
+                    </div>
+                    <div class="container py-6">
+                        <fieldset>
+                            @*Search input controls begin*@
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    @Html.TextBox("search", null, new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" value="search" class="btn btn-primary">
+                                        <span class="btn-search btn-primary">Search</span>
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                                @*Search input controls end*@
+                            </div>
+                            <br />
+                        </fieldset>
+                    </div>
+                    <div class="container py-6">
+                       <div class="row">
+                           <div class="col-sm-4">
+                               <div class="form-control-item"><i class="fa fa-pie-chart"></i> Total <b style="color:green">Acvtive</b> sim cards @Html.Raw(ViewBag.TotalActiveRecords) </div>
+                         </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                             <div class="form-control-item"><i class="fa fa-pie-chart"></i> Total <b style="color:red">Inactive</b> sim cards @Html.Raw(ViewBag.TotalUnassignedRecords) </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md">
+                                <ul class="pagination">
+                                    @Html.PagedListPager(Model, page => Url.Action("InactiveSimCards", null, new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"], sortBy = Request["sortBy"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+                                </ul>
+                            </div>
+                        </div>
+                    </div> @*Close Card Body*@
+                </form>
+            }
+        </div> @*Close Main Card*@
+        <table class="table table-hover">
+            <thead>
+                @if (Model.Count() == 0)
+                // if no record currently exist prompt the member to create one
+                {
+                    <tr class="null-data-box">
+                        <td class="" colspan="10">
+                            <span class="null-data-comment">
+                                <i class="fa fa-3x  fa-times"></i>NO MATCHING RECORDS FOUND:
+                            </span>
+                        </td>
+                    </tr>
+
+                }
+                else if (Model.Count != 0)
+                // if record exists show table and data
+                {
+            <tr class="bg-dark text-white">
+                @*<th class="form-th-item"><i class="fa fa-sort"></i>@Html.ActionLink("Active?", "ActiveCardListing", new { sortBy = ViewBag.IsActive, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>*@
+                <th class="form-th-item">Activated On</th>
+                <th><i class="fa fa-sort"></i>@Html.ActionLink("Batch Number", "InactiveSimCards", new { sortBy = ViewBag.SimCard_BatchReference, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+                <th><i class="fa fa-sort"></i>@Html.ActionLink("Serial Number", "InactiveSimCards", new { sortBy = ViewBag.SimCard_SerialNumber, searchBy = Request["searchBy"], search = Request["search"] }, new { @class = "form-th-item" })</th>
+                <th class="form-th-item">
+                    <span style="color:lightgreen">
+                        <i class="fa fa-clipboard"></i>
+                    </span>Activate</th></tr>
+                }
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                <tr class="form-tr-item">
+                    @*<td class="@(item.IsActive ? "account-active" : "account-inactive ")"></td>*@
+                    <td class="form-item"><span style="color:red">Not Set</span></td>
+                    <td class="form-item">@Html.DisplayFor(modelItem => item.Tbl_SimCardBatches.BatchReference)</td>
+                    <td class="form-item">@Html.DisplayFor(modelItem => item.SerialNumber)</td>
+                    <td>@Html.ActionLink("Activate", "Edit", new { id = item.SIMCardID }, new { @class = "btn btn-outline-success btn-sm" })</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    
+    </div>@*Close Parent Container*@
+</div>

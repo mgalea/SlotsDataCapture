@@ -1,0 +1,148 @@
+﻿#body-row {
+    margin-left:0;
+    margin-right:0;
+}
+#sidebar-container {
+    min-height: 100vh;   
+    background-color: #333;
+    padding: 0;
+}
+.nav-spacer {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+.tl-admin-tl-bar {
+    color: orangered;
+    font-family: Calibri;
+    font-size:larger;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.tl-sda-tl-bar {
+    color:greenyellow;
+    font-family: Calibri;
+    font-size: medium;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+.tl-fm-list {
+    color:mediumturquoise;
+    font-family: Calibri;
+    letter-spacing: 1.5px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.tl-fm-create {
+    color:deepskyblue;
+    font-family: Calibri;
+    letter-spacing:1.5px;
+    font-weight:bold;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.tl-fm-delete {
+    color: red;
+    font-family: Calibri;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.tl-fm-detail {
+    color: lightgreen;
+    font-family: Calibri;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.tl-fm-edit {
+    color: orange;
+    font-family: Calibri;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.tl-fm-dynamic {
+    color: white;
+    font-family: Calibri;
+    letter-spacing: 1.5px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
+.nav-align-actionlink {
+    float: left !important;
+    padding: 4px;
+    text-align: left !important;
+    letter-spacing: 1px;
+    min-width: 100%;
+    background-color: #3e434a;
+    margin-bottom: 10px;
+    font-size: small;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 250px;
+}
+.sidebar-collapsed {
+    width: 20px;
+}
+
+/* Menu item*/
+#sidebar-container .list-group a {
+    height: 50px;
+    color: white;
+}
+
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 35px;
+    padding-left: 30px;
+}
+.sidebar-submenu {
+    font-size: 0.5rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+}
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+.logo-separator {
+    background-color: #333;    
+    height: 60px;
+}
+
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+    content: " \f0d7";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+    content: " \f0da";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}

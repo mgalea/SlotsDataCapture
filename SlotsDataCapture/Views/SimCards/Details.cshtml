@@ -1,0 +1,78 @@
+﻿@model SlotsDataCapture.ENTITIES.SimCards
+@{ViewBag.Title = "Details";}
+<div class="container-fluid">
+    <div class="form-top-container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="tl-sda-tl-bar">S.D.C<span class="tl-fm-detail">Detail</span>Record<span class="tl-fm-dynamic">@Html.DisplayFor(model => model.SerialNumber)</span></h5>
+                    </div>
+                </div> @*Card Header Title Content*@
+            </div> @*Card Header End*@
+        <div class="row  form-row-shade-active">
+            <div class="col-sm-6">
+                <span class="form-style-details">
+                    <i class="fas fa-sim-card"></i>
+                    <i class="fas fa-calendar"></i>
+                    <label for="lbl_receivedon" class="lbl-01">Received On:</label>
+                </span>
+                <p class="lbl-01"><b>@Html.DisplayFor(model => model.Tbl_SimCardBatches.ReceivedOn) </b></p>
+            </div>
+
+            <div class="col-sm-6">
+                <span class="form-style-details">
+                    <i class="fas fa-sim-card"></i>
+                    <i class="fas fa-calendar"></i>
+                    <label for="lbl_receivedon" class="lbl-01">Activated On:</label>
+                </span>
+                <p class="lbl-01"><b>@Html.DisplayFor(model => model.ActivatedOn) </b></p>
+            </div>
+        </div>
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    <span class="form-style-details">
+                        <i class="fas fa-sim-card"></i>
+                        <label for="lbl_serialnumber" class="lbl-01">Serial Number:</label>
+                    </span>
+                    <p class="lbl-01">@Html.DisplayFor(model => model.SerialNumber)</p>
+                  </div>
+                <div class="col-sm-6">
+                    <span class="form-style-details">
+                        <i class="fas fa-sim-card"></i>
+                        <label for="lbl_mobilenumber" class="lbl-01">Sim Mobile Number:</label>
+                    </span>
+                    <p class="lbl-01">@Html.DisplayFor(model => model.MobileNumber)</p>
+                </div>
+            </div>
+            <div class="row  form-row-shade-active">
+                <div class="col-sm-4">
+                    <span class="form-style-details">
+                        <i class="fas fa-sim-card"></i>
+                    </span>
+                    <label for="lbl_simCardActivity" class="form-lb"><b class="lbl-01">Sim Card</b> In Use?</label>
+                    <p class="form-dt-detail"><b>@Html.DisplayFor(model => model.IsActiveDisplay) </b></p>
+                </div>
+              </div>
+              <div class="row  form-row-shade-active">
+                <div class="col-sm-6">
+                    @Html.ActionLink("Edit Operator", "Edit", new { id = Model.SIMCardID }, new { @class = "btn btn-outline-primary" })
+                </div>
+                <div class="col-sm-6">
+
+                    @Html.ActionLink("Back To Operator Listings", "Index", new { id = Model.SIMCardID }, new { @class = "btn btn-outline-primary" })
+
+                </div>
+            </div>
+        </div> @*Close Main Card*@
+        <div class="card-header border-0">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <div>
+                        @Html.Partial("footer")
+                    </div>
+                </div>
+            </div> @*Card Header Title Content*@
+        </div>
+    </div>@*Close Parent Container*@
+</div>
